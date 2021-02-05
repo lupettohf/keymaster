@@ -1,4 +1,4 @@
-package hf.license.owned;
+package hf.keymaster.license.owned;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import hf.application.Application;
+import hf.keymaster.application.Application;
 import hf.keymaster.database.ConnectionManager;
-import hf.license.License;
-import hf.license.LicenseDAO;
-import hf.license.key.Key;
-import hf.license.key.KeyDAO;
-import hf.user.User;
-import hf.utils.Utils;
+import hf.keymaster.license.License;
+import hf.keymaster.license.LicenseDAO;
+import hf.keymaster.license.key.Key;
+import hf.keymaster.license.key.KeyDAO;
+import hf.keymaster.user.User;
+import hf.keymaster.utils.Utils;
 
 public class OwnedLicenseDAO {
 

@@ -1,18 +1,18 @@
-package hf.license;
+package hf.keymaster.license;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import hf.application.Application;
+import hf.keymaster.application.Application;
 import hf.keymaster.database.ConnectionManager;
 
 public class LicenseDAO {
 	
 	public static boolean createLicense(Application app, String Name, String Description, int Duration, int Type)
 	{
-		String QUERY = "INSERT INTO hf.license (appid, name, description, duration, type) VALUES (?,?,?,?,?)";
+		String QUERY = "INSERT INTO hf.keymaster.license (appid, name, description, duration, type) VALUES (?,?,?,?,?)";
 		
 		PreparedStatement preparedStatement; 
 		
@@ -36,7 +36,7 @@ public class LicenseDAO {
 	
 	public static License GetLicense(int id)
 	{
-		String QUERY = "SELECT * FROM hf.license WHERE id = ?";
+		String QUERY = "SELECT * FROM hf.keymaster.license WHERE id = ?";
 		
 		PreparedStatement preparedStatement; 
 		
@@ -66,7 +66,7 @@ public class LicenseDAO {
 	
 	public static List<License> getLicenses(Application app)
 	{
-		String QUERY = "SELECT * FROM hf.license WHERE appid = ?";
+		String QUERY = "SELECT * FROM hf.keymaster.license WHERE appid = ?";
 		
 		PreparedStatement preparedStatement; 
 		List<License> licenseList = new ArrayList<License>();
@@ -98,7 +98,7 @@ public class LicenseDAO {
 
 	public static boolean updateLicense(License Old, License New)
 	{
-		String QUERY = "UPDATE hf.license SET (name, description, duration, type) VALUES (?,?,?,?) WHERE id = ?";
+		String QUERY = "UPDATE hf.keymaster.license SET (name, description, duration, type) VALUES (?,?,?,?) WHERE id = ?";
 		
 		PreparedStatement preparedStatement; 
 		

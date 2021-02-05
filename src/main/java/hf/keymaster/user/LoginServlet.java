@@ -1,4 +1,4 @@
-package hf.user;
+package hf.keymaster.user;
 
 import java.io.IOException;
 
@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet{
 		{
 			 req = request.getRequestDispatcher("/skeletons/pages/login.jsp");
 		} else {
-			 req = request.getRequestDispatcher("/skeletons/pages/hf.user.jsp");
+			 req = request.getRequestDispatcher("/skeletons/pages/hf.keymaster.user.jsp");
 		}		
 		req.include(request, response);
 	}
@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet{
 			if(ID != -1)
 			{
 				session.setAttribute("User", ID);
-				response.sendRedirect("hf.user");
+				response.sendRedirect("hf.keymaster.user");
 			} else {
 				response.sendRedirect("login");
 				//TODO Mostrare Alert Errore

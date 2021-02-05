@@ -1,4 +1,4 @@
-package hf.application;
+package hf.keymaster.application;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import hf.keymaster.database.ConnectionManager;
-import hf.user.User;
-import hf.utils.Utils;
+import hf.keymaster.user.User;
+import hf.keymaster.utils.Utils;
 
 public class ApplicationDAO {
 	
@@ -73,7 +73,7 @@ public class ApplicationDAO {
 	
 	public static boolean updateApplication(Application Old, Application New)
 	{
-		String QUERY = "UPDATE hf.application SET (name, description, website, version) VALUES (?,?,?,?) WHERE id = ?";
+		String QUERY = "UPDATE hf.keymaster.application SET (name, description, website, version) VALUES (?,?,?,?) WHERE id = ?";
 		
 		PreparedStatement preparedStatement; 
 		
@@ -94,7 +94,7 @@ public class ApplicationDAO {
 	
 	public static String regenerateAPIKey(Application app)
 	{
-		String QUERY = "UPDATE hf.application SET (apikey) VALUES (?) WHERE id = ?";
+		String QUERY = "UPDATE hf.keymaster.application SET (apikey) VALUES (?) WHERE id = ?";
 		
 		PreparedStatement preparedStatement; 
 		String NewAPI = Utils.generateSecureString(32);

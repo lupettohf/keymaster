@@ -1,4 +1,4 @@
-package hf.license.owned;
+package hf.keymaster.license.owned;
 
 public class OwnedLicense {
 	private int ID;

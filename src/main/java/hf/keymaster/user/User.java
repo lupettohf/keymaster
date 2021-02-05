@@ -1,4 +1,4 @@
-package hf.user;
+package hf.keymaster.user;
 
 public class User {
 	private int ID;

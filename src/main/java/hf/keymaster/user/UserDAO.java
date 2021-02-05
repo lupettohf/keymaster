@@ -1,4 +1,4 @@
-package hf.user;
+package hf.keymaster.user;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

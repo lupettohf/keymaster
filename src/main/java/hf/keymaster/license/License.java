@@ -1,4 +1,4 @@
-package hf.license;
+package hf.keymaster.license;
 
 public class License {
 	private int ID;

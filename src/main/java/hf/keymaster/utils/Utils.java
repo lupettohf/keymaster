@@ -1,4 +1,4 @@
-package hf.utils;
+package hf.keymaster.utils;
 
 import java.security.SecureRandom;
 

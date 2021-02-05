@@ -1,4 +1,4 @@
-package hf.application;
+package hf.keymaster.application;
 
 public class Application {
 	private int ID;

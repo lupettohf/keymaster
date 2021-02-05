@@ -1,4 +1,4 @@
-package hf.user;
+package hf.keymaster.user;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import hf.utils.Validators;
+import hf.keymaster.utils.Validators;
 
 @WebServlet(name ="RegisterServlet", urlPatterns = {"/register"})
 public class RegisterServlet extends HttpServlet{
@@ -29,7 +29,7 @@ public class RegisterServlet extends HttpServlet{
 		String EMail = request.getParameter("e_mail");
 		HttpSession session = request.getSession();	
 		
-		if(session.getAttribute("User") !=null) { response.sendRedirect("hf.user"); }
+		if(session.getAttribute("User") !=null) { response.sendRedirect("hf.keymaster.user"); }
 		
 		if( Validators.ValidateUsername(Username) && 
 			Validators.ValidatePassword(Password, Password_confirm) &&

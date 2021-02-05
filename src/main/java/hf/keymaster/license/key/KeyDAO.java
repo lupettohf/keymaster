@@ -1,14 +1,14 @@
-package hf.license.key;
+package hf.keymaster.license.key;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import hf.application.Application;
+import hf.keymaster.application.Application;
 import hf.keymaster.database.ConnectionManager;
-import hf.license.License;
-import hf.utils.Utils;
+import hf.keymaster.license.License;
+import hf.keymaster.utils.Utils;
 
 public class KeyDAO {
 
