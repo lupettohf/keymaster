@@ -20,10 +20,8 @@ public class LoginServlet extends HttpServlet{
 		
 		User user = (User) session.getAttribute("user");
 		
-		if(user == null)
+		if(user != null)
 		{
-			 
-		} else {
 			 response.sendRedirect("user");
 		}		
 		req.include(request, response);
@@ -40,8 +38,6 @@ public class LoginServlet extends HttpServlet{
 			int ID = UserDAO.loginUser(Username, Password);
 			if(ID != -1)
 			{
-				System.out.print(ID);
-				//session.invalidate();
 				session.setAttribute("user", UserDAO.getUser(ID));
 				response.sendRedirect("user");
 			} else {

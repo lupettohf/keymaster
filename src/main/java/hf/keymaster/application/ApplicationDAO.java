@@ -11,10 +11,10 @@ import hf.keymaster.utils.Utils;
 
 public class ApplicationDAO {
 	
-	public static boolean createApplication(User user, String name, String description, String website, int version)
+	public static boolean createApplication(User user, String name, String description, String website)
 	{
 		
-		String QUERY = "INSERT INTO applications (ownerid, name, description, website, version) VALUES (?,?,?,?,?)";
+		String QUERY = "INSERT INTO applications (ownerid, name, description, website, version, apikey) VALUES (?,?,?,?,?,?)";
 		
 		PreparedStatement preparedStatement; 
 		
@@ -27,7 +27,7 @@ public class ApplicationDAO {
 			preparedStatement.setString(2, name);
 			preparedStatement.setString(3, description);
 			preparedStatement.setString(4, website);
-			preparedStatement.setInt(5, version);
+			preparedStatement.setInt(5, 0);
 			preparedStatement.setString(6, Utils.generateSecureString(32));
 			
 			if(preparedStatement.executeUpdate() == 1) { return true; } 
@@ -73,7 +73,7 @@ public class ApplicationDAO {
 	
 	public static boolean updateApplication(Application Old, Application New)
 	{
-		String QUERY = "UPDATE application SET (name, description, website, version) VALUES (?,?,?,?) WHERE id = ?";
+		String QUERY = "UPDATE applications SET name = ?, description = ?, website = ?, version = ? WHERE id = ?";
 		
 		PreparedStatement preparedStatement; 
 		
@@ -94,7 +94,7 @@ public class ApplicationDAO {
 	
 	public static String regenerateAPIKey(Application app)
 	{
-		String QUERY = "UPDATE applications SET (apikey) VALUES (?) WHERE id = ?";
+		String QUERY = "UPDATE applications SET apikey = ? WHERE id = ?";
 		
 		PreparedStatement preparedStatement; 
 		String NewAPI = Utils.generateSecureString(32);
