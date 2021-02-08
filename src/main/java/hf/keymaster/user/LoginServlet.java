@@ -16,15 +16,15 @@ public class LoginServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		HttpSession session = request.getSession();
-		RequestDispatcher req = null;
+		RequestDispatcher req = request.getRequestDispatcher("/skeletons/pages/login.jsp");
 		
-		String User = (String) session.getAttribute("User");
+		User user = (User) session.getAttribute("user");
 		
-		if(User == null)
+		if(user == null)
 		{
-			 req = request.getRequestDispatcher("/skeletons/pages/login.jsp");
+			 
 		} else {
-			 req = request.getRequestDispatcher("/skeletons/pages/hf.keymaster.user.jsp");
+			 response.sendRedirect("user");
 		}		
 		req.include(request, response);
 	}
@@ -40,8 +40,10 @@ public class LoginServlet extends HttpServlet{
 			int ID = UserDAO.loginUser(Username, Password);
 			if(ID != -1)
 			{
-				session.setAttribute("User", ID);
-				response.sendRedirect("hf.keymaster.user");
+				System.out.print(ID);
+				//session.invalidate();
+				session.setAttribute("user", UserDAO.getUser(ID));
+				response.sendRedirect("user");
 			} else {
 				response.sendRedirect("login");
 				//TODO Mostrare Alert Errore

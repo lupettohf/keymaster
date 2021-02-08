@@ -73,7 +73,7 @@ public class ApplicationDAO {
 	
 	public static boolean updateApplication(Application Old, Application New)
 	{
-		String QUERY = "UPDATE hf.keymaster.application SET (name, description, website, version) VALUES (?,?,?,?) WHERE id = ?";
+		String QUERY = "UPDATE application SET (name, description, website, version) VALUES (?,?,?,?) WHERE id = ?";
 		
 		PreparedStatement preparedStatement; 
 		
@@ -94,7 +94,7 @@ public class ApplicationDAO {
 	
 	public static String regenerateAPIKey(Application app)
 	{
-		String QUERY = "UPDATE hf.keymaster.application SET (apikey) VALUES (?) WHERE id = ?";
+		String QUERY = "UPDATE applications SET (apikey) VALUES (?) WHERE id = ?";
 		
 		PreparedStatement preparedStatement; 
 		String NewAPI = Utils.generateSecureString(32);

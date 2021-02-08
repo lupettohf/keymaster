@@ -15,6 +15,8 @@ import hf.keymaster.utils.Validators;
 @WebServlet(name ="RegisterServlet", urlPatterns = {"/register"})
 public class RegisterServlet extends HttpServlet{
 	
+	private static final long serialVersionUID = -8078715490524280378L;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{		
 		RequestDispatcher req = request.getRequestDispatcher("/skeletons/pages/register.jsp");
@@ -26,10 +28,10 @@ public class RegisterServlet extends HttpServlet{
 		String Username = request.getParameter("username");
 		String Password = request.getParameter("password");
 		String Password_confirm = request.getParameter("password_confirm");
-		String EMail = request.getParameter("e_mail");
+		String EMail = request.getParameter("email");
 		HttpSession session = request.getSession();	
 		
-		if(session.getAttribute("User") !=null) { response.sendRedirect("hf.keymaster.user"); }
+		if(session.getAttribute("User") !=null) { response.sendRedirect("user"); }
 		
 		if( Validators.ValidateUsername(Username) && 
 			Validators.ValidatePassword(Password, Password_confirm) &&

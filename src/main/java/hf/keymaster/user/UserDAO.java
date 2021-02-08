@@ -56,17 +56,52 @@ public class UserDAO {
 			preparedStatement.setString(1, Username);
 			preparedStatement.setString(2, hashPassword(Password));
 			preparedStatement.setString(3, EMail);
+			if(preparedStatement.executeUpdate() == 1) { return true; } 
+		}catch(Exception e) { e.printStackTrace(); };		
+		return false;
+
+	}
+	
+	public static boolean SetFirstLastName(User user)
+	{
+		String QUERY = "UPDATE users SET firstname = ?, lastname = ? WHERE id = ?";
+		
+		PreparedStatement preparedStatement; 
+		
+		try {
+			preparedStatement = ConnectionManager.getDBConnection().prepareStatement(QUERY);
+			
+			preparedStatement.setString(1, user.getFirstName());
+			preparedStatement.setString(2, user.getLastName());
+			preparedStatement.setInt(3, user.getID());
 			
 			if(preparedStatement.executeUpdate() == 1) { return true; } 
-					
-		}catch(Exception e) { e.printStackTrace(); }
-		
+		}catch(Exception e) { e.printStackTrace(); };		
 		return false;
+
+	}
+
+	public static boolean UpdatePassword(User user)
+	{
+		String QUERY = "UPDATE users SET password = ? WHERE id = ?";
+		
+		PreparedStatement preparedStatement; 
+		
+		try {
+			preparedStatement = ConnectionManager.getDBConnection().prepareStatement(QUERY);
+			
+			preparedStatement.setString(1, hashPassword(user.getPassword()));
+			preparedStatement.setInt(2, user.getID());
+			
+			if(preparedStatement.executeUpdate() == 1) { return true; } 
+		}catch(Exception e) { e.printStackTrace(); };		
+		return false;
+
 	}
 	
 	public static int loginUser(String Username, String Password)
 	{
-		String QUERY = "SELECT id FROM users WHERE EXISTS(select 1 from users where username = ?) AND password = ?";
+		String QUERY = "SELECT id FROM users WHERE username = ? AND password = ?";
 				
 		PreparedStatement preparedStatement; 
 		

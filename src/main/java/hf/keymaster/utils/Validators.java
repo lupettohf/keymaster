@@ -15,7 +15,7 @@ public class Validators {
 	public static boolean ValidatePassword(String Password, String Password_Confirm)
 	{
 		if(Password.length() > 30 || Password.length() < 5) { return false; }
-		if(Password != Password_Confirm) { return false; }
+		if(!Password.equals(Password_Confirm)) { return false; }
 		
 		return true;
 	}
