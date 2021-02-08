@@ -9,6 +9,7 @@
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/User.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/LoginServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/application/ManageApplicationServlet.java
+/Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/license/ManageLicenseServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/license/owned/OwnedLicense.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/application/CreateApplicationServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/RegisterServlet.java
