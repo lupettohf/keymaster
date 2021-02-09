@@ -20,7 +20,6 @@ public class ManageLicenseServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{		
 		HttpSession session = request.getSession();	
-		RequestDispatcher req = request.getRequestDispatcher("/skeletons/pages/managealicense.jsp");
 		
 		User _u = (User) session.getAttribute("user");
 		
@@ -29,7 +28,6 @@ public class ManageLicenseServlet extends HttpServlet{
 			else { response.sendRedirect("list"); }
 		}else{ response.sendRedirect("/login"); } 
 		
-		req.include(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -55,6 +53,12 @@ public class ManageLicenseServlet extends HttpServlet{
 			session.setAttribute("license", _l);
 			if(LicenseName != null && LicenseDescription != null && LicenseDuration != null && LicenseType != null)
 			{
+				_nl = _l;
+				_nl.setName(LicenseName);
+				_nl.setDescription(LicenseDescription);
+				_nl.setDuration(Integer.parseInt(LicenseDuration));
+				_nl.setType(Integer.parseInt(LicenseType));
+				System.out.print(_nl.toString());
 				if(LicenseDAO.updateLicense(_l, _nl))
 				{
 					response.sendRedirect("list");

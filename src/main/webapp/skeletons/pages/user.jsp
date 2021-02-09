@@ -4,11 +4,12 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 
 <jsp:include page="../header.jsp" />
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Hello ${user.getUsername()}</h1>
+          </div>
 <form class="form-horizontal" action="user" method="post">
 <fieldset>
-
-<!-- Form Name -->
-<legend>Hello ${user.getUsername()}</legend>
 
 <!-- Text input-->
 <div class="form-group">
@@ -57,7 +58,6 @@
 
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Update">Update</label>
   <div class="col-md-4">
     <button id="register" name="register" class="btn btn-primary">Update</button>
   </div>
@@ -65,4 +65,5 @@
 
 </fieldset>
 </form>
+</main>
 <jsp:include page="../footer.jsp" />

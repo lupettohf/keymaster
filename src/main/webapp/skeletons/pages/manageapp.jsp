@@ -3,9 +3,13 @@
     <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
     <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     <jsp:include page="../header.jsp" />
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Managing ${app.getName()}</h1>
+          </div>
     <form class="form-horizontal" action="manage" method="post">
     	<fieldset>
-    		<legend>Managing ${app.getName()}</legend>
+    		<div class="card" style="">
     		<!-- Text input-->
     		<div class="form-group">
     			<label class="col-md-4 control-label" for="appname">Application
@@ -49,11 +53,13 @@
     		
     		<!-- Button -->
     		<div class="form-group">
-    			<label class="col-md-4 control-label" for="create">Update</label>
     			<div class="col-md-4">
     				<button id="update_details" name="update_details"
     					class="btn btn-primary" value="true">Update</button>
+    					    				<a href="manage/licenses/list" id="manage_license" name="manage_license"
+    					class="btn btn-primary" value="true">Manage Licenses</a>
     			</div>
+    		</div>
     		</div>
     		<hr>
     		<div class="card" style="">
@@ -82,12 +88,5 @@
     	</fieldset>
     	<input type="hidden" id="manage" name="manage" value="${app.getID()}">
     </form>
-    		<form class="form-horizontal" action="manage/licenses/list" method="get">
-    		<div class="form-group">
-    			<div class="col-md-4">
-    				<button id="manage_license" name="manage_license"
-    					class="btn btn-primary" value="true">Manage Licenses</button>
-    			</div>
-    		</div>
-    		</form>
+    		</main>
     <jsp:include page="../footer.jsp" />

@@ -98,7 +98,7 @@ public class LicenseDAO {
 
 	public static boolean updateLicense(License Old, License New)
 	{
-		String QUERY = "UPDATE licenses SET (name, description, duration, type) VALUES (?,?,?,?) WHERE id = ?";
+		String QUERY = "UPDATE licenses SET name = ?, description = ?, duration = ?, type = ? WHERE id = ?";
 		
 		PreparedStatement preparedStatement; 
 		

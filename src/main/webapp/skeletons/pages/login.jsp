@@ -1,10 +1,10 @@
 <jsp:include page="../header.jsp" />
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Login</h1>
+          </div>
 <form class="form-horizontal" action="login" method="post">
 <fieldset>
-
-<!-- Form Name -->
-<legend>Login</legend>
-
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="username">Username</label>  
@@ -18,7 +18,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="password">Password</label>
   <div class="col-md-4">
-    <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
+    <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="">
     
   </div>
 </div>
@@ -32,4 +32,5 @@
 
 </fieldset>
 </form>
+</main>
 <jsp:include page="../footer.jsp" />

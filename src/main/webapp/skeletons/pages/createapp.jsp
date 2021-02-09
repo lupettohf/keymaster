@@ -4,11 +4,12 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 
 <jsp:include page="../header.jsp" />
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Create a new application</h1>
+          </div>
 <form class="form-horizontal" action="new" method="post">
 <fieldset>
-
-<!-- Form Name -->
-<legend>Create a new application</legend>
 
 <!-- Text input-->
 <div class="form-group">
@@ -43,9 +44,7 @@
     <button id="create" name="create" class="btn btn-primary">Create</button>
   </div>
 </div>
-
-
-
 </fieldset>
 </form>
+</main>
 <jsp:include page="../footer.jsp" />

@@ -16,6 +16,9 @@ import hf.keymaster.user.User;
 
 @WebServlet(name = "ListLicensesServlet", displayName="ListLicensesServlet", urlPatterns = {"/app/manage/licenses/list"})
 public class ListLicensesServlet extends HttpServlet{
+
+	private static final long serialVersionUID = -7885180140957536213L;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{		
 		HttpSession session = request.getSession();	

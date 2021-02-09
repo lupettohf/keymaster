@@ -1,4 +1,5 @@
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/database/ConnectionManager.java
+/Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/license/key/ManagesKeysServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/LogoutServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/application/Application.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/license/LicenseDAO.java
