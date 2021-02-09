@@ -141,4 +141,35 @@ public class ApplicationDAO {
 		
 		return null;
 	}
+	
+	public static Application getApplication(String apikey)
+	{
+		String QUERY = "SELECT * FROM applications WHERE apikey = ?";
+		
+		PreparedStatement preparedStatement; 
+		
+		try {
+			preparedStatement = ConnectionManager.getDBConnection().prepareStatement(QUERY);
+			
+			preparedStatement.setString(1, apikey);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			if(rs.next())
+			{
+				return new Application(
+						rs.getInt("id"), 
+						rs.getInt("ownerid"), 
+						rs.getString("name"), 
+						rs.getString("description"), 
+						rs.getString("website"), 
+						rs.getInt("version"), 
+						rs.getString("apikey")
+				);
+			} 
+					
+		}catch(Exception e) { e.printStackTrace(); }
+		
+		return null;
+	}
 }
