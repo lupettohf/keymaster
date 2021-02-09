@@ -5,9 +5,8 @@ public class Key {
 	private int LicenseID;
 	private String LicenseKey;
 	private boolean Redeemed;
-	
-	public Key(int ID, int LicenseID, String LicenseKey, boolean Redeemed)
-	{
+
+	public Key(int ID, int LicenseID, String LicenseKey, boolean Redeemed) {
 		this.ID = ID;
 		this.LicenseID = LicenseID;
 		this.LicenseKey = LicenseKey;

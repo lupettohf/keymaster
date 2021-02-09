@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import hf.keymaster.application.Application;
 import hf.keymaster.database.ConnectionManager;
 import hf.keymaster.license.License;
 import hf.keymaster.utils.Utils;
@@ -58,7 +57,7 @@ public class KeyDAO {
 
 		return null;
 	}
-	
+
 	public static Key getKey(String key) {
 		String QUERY = "SELECT * FROM `keys` WHERE licensekey = ?";
 
@@ -82,11 +81,10 @@ public class KeyDAO {
 
 		return null;
 	}
-	
-	public static int countKeys(License license)
-	{
+
+	public static int countKeys(License license) {
 		String QUERY = "SELECT COUNT(*) FROM `keys` WHERE licenseid = ?";
-		
+
 		PreparedStatement preparedStatement;
 
 		try {
@@ -104,13 +102,12 @@ public class KeyDAO {
 			e.printStackTrace();
 		}
 
-		return -1;	
+		return -1;
 	}
-	
-	public static int countRedemedKeys(License license)
-	{
+
+	public static int countRedemedKeys(License license) {
 		String QUERY = "SELECT COUNT(*) FROM `keys` WHERE licenseid = ? AND redeemed = 1";
-		
+
 		PreparedStatement preparedStatement;
 
 		try {
@@ -128,19 +125,17 @@ public class KeyDAO {
 			e.printStackTrace();
 		}
 
-		return -1;	
+		return -1;
 	}
-	
-	public static List<Key> getKeys(License license, boolean OnlyNonRedeemed)
-	{
+
+	public static List<Key> getKeys(License license, boolean OnlyNonRedeemed) {
 		String QUERY = "SELECT * FROM `keys` WHERE licenseid = ?";
-		
-		if(OnlyNonRedeemed)
-		{
+
+		if (OnlyNonRedeemed) {
 			QUERY = "SELECT * FROM `keys` WHERE licenseid = ? AND redeemed = 0";
 		}
-		
-		PreparedStatement preparedStatement; 
+
+		PreparedStatement preparedStatement;
 		List<Key> keyList = new ArrayList<Key>();
 
 		try {
@@ -150,31 +145,25 @@ public class KeyDAO {
 
 			ResultSet rs = preparedStatement.executeQuery();
 
-			while(rs.next())
-			{
-				keyList.add(
-						new Key(
-								rs.getInt("id"), 
-								rs.getInt("licenseid"), 
-								rs.getString("licensekey"), 
-								rs.getBoolean("redeemed")
-								));
-			} 
-		} catch (Exception e) { e.printStackTrace(); }
-		
+			while (rs.next()) {
+				keyList.add(new Key(rs.getInt("id"), rs.getInt("licenseid"), rs.getString("licensekey"),
+						rs.getBoolean("redeemed")));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return keyList;
 	}
-	
-	public static List<Key> getKeys(License license, boolean OnlyNonRedeemed, int offset)
-	{
+
+	public static List<Key> getKeys(License license, boolean OnlyNonRedeemed, int offset) {
 		String QUERY = "SELECT * FROM `keys` WHERE licenseid = ? LIMIT ?,10";
-		
-		if(OnlyNonRedeemed)
-		{
+
+		if (OnlyNonRedeemed) {
 			QUERY = "SELECT * FROM `keys` WHERE licenseid = ? AND redeemed = 0 LIMIT ?,10";
 		}
-		
-		PreparedStatement preparedStatement; 
+
+		PreparedStatement preparedStatement;
 		List<Key> keyList = new ArrayList<Key>();
 
 		try {
@@ -185,23 +174,19 @@ public class KeyDAO {
 
 			ResultSet rs = preparedStatement.executeQuery();
 
-			while(rs.next())
-			{
-				keyList.add(
-						new Key(
-								rs.getInt("id"), 
-								rs.getInt("licenseid"), 
-								rs.getString("licensekey"), 
-								rs.getBoolean("redeemed")
-								));
-			} 
-		} catch (Exception e) { e.printStackTrace(); }
-		
+			while (rs.next()) {
+				keyList.add(new Key(rs.getInt("id"), rs.getInt("licenseid"), rs.getString("licensekey"),
+						rs.getBoolean("redeemed")));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return keyList;
 	}
 
-	public static boolean activateKey(int id)
-	{/*TODO da finire*/ return false;}
-	
+	public static boolean activateKey(int id) {
+		/* TODO da finire */ return false;
+	}
+
 }
- 

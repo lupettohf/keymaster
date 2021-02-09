@@ -1,14 +1,15 @@
 package hf.keymaster.api;
 
 public class ApiResponse {
-	
+
 	private String ApplicationName;
 	private String LicenseName;
 	private String LicenseDescription;
 	private int Type;
 	private long ActivationEpoch;
-	
-	public ApiResponse(String ApplicationName, String LicenseName, String LicenseDescription, int Type, long ActivationEpoch) {
+
+	public ApiResponse(String ApplicationName, String LicenseName, String LicenseDescription, int Type,
+			long ActivationEpoch) {
 		this.ApplicationName = ApplicationName;
 		this.LicenseName = LicenseName;
 		this.LicenseDescription = LicenseDescription;

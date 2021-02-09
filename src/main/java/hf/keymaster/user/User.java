@@ -9,12 +9,12 @@ public class User {
 	private String LastName;
 	private String HardwareID;
 	private boolean isDeveloper;
-	
-	public User(int ID, String Username, String Password, String EMail, String FirstName, String LastName, String HardwareID, boolean isDeveloper)
-	{
+
+	public User(int ID, String Username, String Password, String EMail, String FirstName, String LastName,
+			String HardwareID, boolean isDeveloper) {
 		this.ID = ID;
 		this.Username = Username;
-		this.Password = Password; 
+		this.Password = Password;
 		this.EMail = EMail;
 		this.FirstName = FirstName;
 		this.LastName = LastName;
@@ -85,6 +85,5 @@ public class User {
 	public void setDeveloper(boolean isDeveloper) {
 		this.isDeveloper = isDeveloper;
 	}
-	
-	
+
 }

@@ -1,7 +1,6 @@
 package hf.keymaster.application;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,27 +12,35 @@ import javax.servlet.http.HttpSession;
 
 import hf.keymaster.user.User;
 
-@WebServlet(name = "ManageApplicationServlet", displayName="ManageApplicationServlet", urlPatterns = {"/app/manage"})
-public class ManageApplicationServlet extends HttpServlet{
+@WebServlet(name = "ManageApplicationServlet", displayName = "ManageApplicationServlet", urlPatterns = {
+		"/app/manage" })
+public class ManageApplicationServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{		
-		HttpSession session = request.getSession();	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		RequestDispatcher req = request.getRequestDispatcher("/skeletons/pages/manageapp.jsp");
-		
+
 		User _u = (User) session.getAttribute("user");
-		
-		if(_u != null) {  
-			if(!_u.isDeveloper()) { response.sendRedirect("/user"); }
-			else { response.sendRedirect("list"); }
-		}else{ response.sendRedirect("/login"); } 
-		
+
+		if (_u != null) {
+			if (!_u.isDeveloper()) {
+				response.sendRedirect("/user");
+			} else {
+				response.sendRedirect("list");
+			}
+		} else {
+			response.sendRedirect("/login");
+		}
+
 		req.include(request, response);
 	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
-		HttpSession session = request.getSession();	
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		RequestDispatcher req = request.getRequestDispatcher("/skeletons/pages/manageapp.jsp");
 		String ApplicationID = request.getParameter("manage");
 		String ApplicationName = request.getParameter("name");
@@ -42,28 +49,31 @@ public class ManageApplicationServlet extends HttpServlet{
 		String ApplicationVersion = request.getParameter("version");
 		String RegenerateApikey = request.getParameter("regenerate_api");
 		String UpdateDetails = request.getParameter("update_details");
-		
+
 		User _u = (User) session.getAttribute("user");
 		Application _a = null; // Current Application
 		Application _na = null; // New Application
-		
-		if(ApplicationID.isEmpty()) { response.sendRedirect("list"); }
-		if(!_u.isDeveloper()) { response.sendRedirect("/user"); }
-		
+
+		if (ApplicationID.isEmpty()) {
+			response.sendRedirect("list");
+		}
+		if (!_u.isDeveloper()) {
+			response.sendRedirect("/user");
+		}
+
 		try {
 			_a = ApplicationDAO.getApplication(Integer.parseInt(ApplicationID));
-			
-			if(_a.getOwnerID() != _u.getID()) { response.sendRedirect("list"); }
-			else {
+
+			if (_a.getOwnerID() != _u.getID()) {
+				response.sendRedirect("list");
+			} else {
 				session.removeAttribute("app");
 				session.setAttribute("app", _a);
-				
-				if(RegenerateApikey != null)
-				{
+
+				if (RegenerateApikey != null) {
 					ApplicationDAO.regenerateAPIKey(_a);
 				}
-				if(UpdateDetails != null)
-				{
+				if (UpdateDetails != null) {
 					_na = _a;
 					_na.setName(ApplicationName);
 					_na.setDescription(ApplicationDescription);
@@ -72,7 +82,9 @@ public class ManageApplicationServlet extends HttpServlet{
 					ApplicationDAO.updateApplication(_a, _na);
 				}
 			}
-		}catch(Exception e) {e.printStackTrace();}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		req.include(request, response);
 	}
 }

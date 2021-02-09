@@ -6,9 +6,8 @@ public class OwnedLicense {
 	private int licenseID;
 	private int keyID;
 	private long activationEpoch;
-	
-	public OwnedLicense(int ID, int userID, int licenseID, int keyID, long activationEpoch)
-	{
+
+	public OwnedLicense(int ID, int userID, int licenseID, int keyID, long activationEpoch) {
 		this.ID = ID;
 		this.userID = userID;
 		this.licenseID = licenseID;
@@ -55,5 +54,5 @@ public class OwnedLicense {
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
-	
+
 }

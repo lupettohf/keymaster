@@ -7,9 +7,8 @@ public class License {
 	private String Description;
 	private int Duration;
 	private int Type;
-	
-	public License(int ID, int AppID, String Name, String Description, int Duration, int Type)
-	{
+
+	public License(int ID, int AppID, String Name, String Description, int Duration, int Type) {
 		this.ID = ID;
 		this.AppID = AppID;
 		this.Name = Name;
@@ -65,5 +64,5 @@ public class License {
 	public void setType(int type) {
 		Type = type;
 	}
-	
+
 }
