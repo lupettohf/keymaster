@@ -133,11 +133,11 @@ public class KeyDAO {
 	
 	public static List<Key> getKeys(License license, boolean OnlyNonRedeemed)
 	{
-		String QUERY = "SELECT * FROM key WHERE licenseid = ?";
+		String QUERY = "SELECT * FROM `keys` WHERE licenseid = ?";
 		
 		if(OnlyNonRedeemed)
 		{
-			QUERY = "SELECT * FROM key WHERE licenseid = ? AND redeemed = 0";
+			QUERY = "SELECT * FROM `keys` WHERE licenseid = ? AND redeemed = 0";
 		}
 		
 		PreparedStatement preparedStatement; 

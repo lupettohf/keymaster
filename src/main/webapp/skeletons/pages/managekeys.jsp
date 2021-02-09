@@ -30,6 +30,7 @@
 <div class="form-group">
   <div class="col-md-4">
     <button id="action" name="action" class="btn btn-primary" value="generate">Generate</button>
+    <a href="download" class="btn btn-primary">Download Keys CSV</a>
   </div>
 </div>
 
