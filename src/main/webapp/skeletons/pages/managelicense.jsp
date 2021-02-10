@@ -54,7 +54,6 @@
 
 			<!-- Button -->
 			<div class="form-group">
-				<label class="col-md-4 control-label" for="create">Update</label>
 				<div class="col-md-4">
 					<button id="update_details" name="update_details"
 						class="btn btn-primary" value="true">Update</button>

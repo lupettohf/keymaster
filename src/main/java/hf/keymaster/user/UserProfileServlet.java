@@ -57,8 +57,9 @@ public class UserProfileServlet extends HttpServlet {
 			if (!FirstName.isEmpty() && !LastName.isEmpty()) {
 				_nu.setFirstName(FirstName);
 				_nu.setLastName(LastName);
-				UserDAO.SetFirstLastName(_nu);
+				UserDAO.SetFirstLastName(_nu);				
 			}
+			response.sendRedirect("/user");
 		}
 	}
 }

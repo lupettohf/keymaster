@@ -18,7 +18,7 @@ import hf.keymaster.license.key.KeyDAO;
 import hf.keymaster.license.owned.OwnedLicenseDAO;
 
 @WebServlet(name = "ActivateLicenseServelet", urlPatterns = { "/user/licenses/activate" })
-public class ActivateLicenseServelet extends HttpServlet{
+public class ActivateLicenseServelet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -41,25 +41,24 @@ public class ActivateLicenseServelet extends HttpServlet{
 
 		String ProductKey = request.getParameter("ProductKey");
 		User user = (User) session.getAttribute("user");
-		
+
 		if (ProductKey != null && user != null) {
 			Key _k = KeyDAO.getKey(ProductKey);
-			
-			if(_k !=null)			
-			{
-				if(!_k.isRedeemed())
-				{
-					License _lic = LicenseDAO.GetLicense(_k.getLicenseID());
-					if(OwnedLicenseDAO.activateLicense(user, _lic, _k))
-					{
-						
-					} else { /* TODO: Error in license activation */ } 
-				} else { /* TODO: Key already redeemed */
-			}
-		} else { /* TODO: Generic error */ } 
 
+			if (_k != null) {
+				if (!_k.isRedeemed()) {
+					License _lic = LicenseDAO.GetLicense(_k.getLicenseID());
+					if (OwnedLicenseDAO.activateLicense(user, _lic, _k)) {
+						response.sendRedirect("/user/licenses");
+						/* TODO: add mesaggio successo */
+					} else {
+						/* TODO: Error in license activation */ }
+				} else { /* TODO: Key already redeemed */
+				}
+			} else {
+				/* TODO: Generic error */ }
+
+		}
 	}
-}
-	
 
 }

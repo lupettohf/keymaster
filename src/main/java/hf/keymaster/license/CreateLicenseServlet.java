@@ -44,6 +44,7 @@ public class CreateLicenseServlet extends HttpServlet {
 					if (LicenseDAO.createLicense(_a, License_Name, License_Description,
 							Integer.parseInt(License_Duration), Integer.parseInt(License_Type))) {
 						response.sendRedirect("/app/manage/licenses/list");
+						//TODO Fix redirect localhost
 					}
 				}
 				req.include(request, response);

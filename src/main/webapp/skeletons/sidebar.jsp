@@ -27,6 +27,12 @@
 								data-feather="home"></span> User Dashboard
 						</a></li>
 					</c:if>
+					
+					<c:if test="${user != null }">
+						<li class="nav-item"><a class="nav-link" href="/destroy"> <span
+								data-feather="user-x"></span> Logout
+						</a></li>
+					</c:if>
 
 					<c:if test="${user != null }">
 						<li class="nav-item"><a class="nav-link" href="/user/licenses">

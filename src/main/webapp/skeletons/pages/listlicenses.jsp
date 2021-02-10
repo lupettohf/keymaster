@@ -18,7 +18,8 @@
 						<th>Description</th>
 						<th>Duration<br></th>
 						<th>Type<br></th>
-						<th>Manage<br></th>
+						<th>Settings<br></th>
+						<th>Keys</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -30,8 +31,9 @@
 							<td>${license.getType()}</td>
 							<td>
 								<button id="manage" name="manage" value="${license.getID()}"
-									class="btn btn-primary">Manage</button>
+									class="btn btn-primary">Setting</button>
 							</td>
+							<td><a href="/app/manage/licenses/keys/manage" class="btn btn-primary">Manage</a>
 						</tr>
 					</c:forEach>
 				</tbody>
