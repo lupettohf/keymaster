@@ -39,7 +39,7 @@ public class AuthenticateServelt extends HttpServlet {
 			String Password = request.getParameter("password");
 			PrintWriter out = response.getWriter();
 
-			if (!(Username != null && Password != null)) {
+			if ((Username != null && Password != null)) {
 				int UserID = UserDAO.loginUser(Username, Password);
 
 				if (UserID != -1) {
@@ -58,17 +58,23 @@ public class AuthenticateServelt extends HttpServlet {
 										out.print(Json);
 										out.flush();
 									} else {
+										System.out.println("dioboia");
+										response.setStatus(423);
 										/* License exsist but expired */ }
 								}
 							}
 						}
 					} else {
+						response.setStatus(204);
 						/* No license */ }
 				} else {
+					response.setStatus(401);
 					/* Wrong Username or Password */ }
 			} else {
+				response.setStatus(503);
 				/* No username or password */ }
 		} else {
+			response.setStatus(503);
 			/* Bad Api */ }
 	}
 }

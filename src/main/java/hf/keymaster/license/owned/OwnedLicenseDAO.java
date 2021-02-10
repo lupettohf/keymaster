@@ -53,7 +53,7 @@ public class OwnedLicenseDAO {
 	}
 
 	public static OwnedLicense getOwnedLicense(int id) {
-		String QUERY = "SELECT * FROM ownedlicense WHERE id = ?";
+		String QUERY = "SELECT * FROM ownedlicenses WHERE id = ?";
 
 		PreparedStatement preparedStatement;
 
@@ -128,14 +128,13 @@ public class OwnedLicenseDAO {
 		OwnedLicense _ow = getOwnedLicense(owned.getID());
 		License _lic = LicenseDAO.GetLicense(_ow.getLicenseID());
 		long now = Instant.now().toEpochMilli();
-
-		if (_ow == null || _lic == null) {
+		int elapsed = (int) TimeUnit.MILLISECONDS.toDays(now - owned.getActivationEpoch());
+		
+		if(elapsed > _lic.getDuration())
+		{
 			return false;
-		}
-		if (TimeUnit.MILLISECONDS.toDays(now - _ow.getActivationEpoch()) > _lic.getDuration()) {
+		} else {
 			return true;
 		}
-
-		return false;
 	}
 }
