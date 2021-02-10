@@ -57,6 +57,7 @@
 				<div class="col-md-4">
 					<button id="update_details" name="update_details"
 						class="btn btn-primary" value="true">Update</button>
+					<a href="/app/manage/licenses/keys/manage" class="btn btn-primary">Manage</a>
 				</div>
 			</div>
 			<hr>
