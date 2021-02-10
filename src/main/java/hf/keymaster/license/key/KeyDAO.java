@@ -186,7 +186,25 @@ public class KeyDAO {
 	}
 
 	public static boolean activateKey(int id) {
-		/* TODO da finire */ return false;
+		String QUERY = "UPDATE `keys` SET redeemed = ? WHERE id = ?";
+
+		PreparedStatement preparedStatement;
+
+		try {
+			preparedStatement = ConnectionManager.getDBConnection().prepareStatement(QUERY);
+
+			preparedStatement.setBoolean(1, true);
+			preparedStatement.setInt(2, id);
+
+			if (preparedStatement.executeUpdate() == 1) {
+				return true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 
 }

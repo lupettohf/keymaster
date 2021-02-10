@@ -27,7 +27,7 @@ public class OwnedLicenseDAO {
 			return false;
 		}
 
-		String QUERY = "INSERT INTO ownedlicenses (ownerid, licenseid, keyid, activationepoch) VALUES (?,?,?,?)";
+		String QUERY = "INSERT INTO ownedlicenses (userid, licenseid, keyid, activationepoch) VALUES (?,?,?,?)";
 
 		PreparedStatement preparedStatement;
 
@@ -65,7 +65,7 @@ public class OwnedLicenseDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			if (rs.next()) {
-				return new OwnedLicense(rs.getInt("id"), rs.getInt("ownerid"), rs.getInt("licenseid"),
+				return new OwnedLicense(rs.getInt("id"), rs.getInt("userid"), rs.getInt("licenseid"),
 						rs.getInt("keyid"), rs.getLong("activationepoch"));
 			}
 
@@ -77,7 +77,7 @@ public class OwnedLicenseDAO {
 	}
 
 	public static List<OwnedLicense> getOwnedLicenses(User user) {
-		String QUERY = "SELECT * FROM ownedlicenses WHERE ownerid = ?";
+		String QUERY = "SELECT * FROM ownedlicenses WHERE userid = ?";
 
 		PreparedStatement preparedStatement;
 		List<OwnedLicense> ownedLicense = new ArrayList<OwnedLicense>();
@@ -90,7 +90,7 @@ public class OwnedLicenseDAO {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				ownedLicense.add(new OwnedLicense(rs.getInt("id"), rs.getInt("ownerid"), rs.getInt("licenseid"),
+				ownedLicense.add(new OwnedLicense(rs.getInt("id"), rs.getInt("userid"), rs.getInt("licenseid"),
 						rs.getInt("keyid"), rs.getLong("activationepoch")));
 			}
 
