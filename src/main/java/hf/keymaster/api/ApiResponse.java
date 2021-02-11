@@ -7,14 +7,16 @@ public class ApiResponse {
 	private String LicenseDescription;
 	private int Type;
 	private long ActivationEpoch;
+	private String HardwareID;
 
 	public ApiResponse(String ApplicationName, String LicenseName, String LicenseDescription, int Type,
-			long ActivationEpoch) {
+			long ActivationEpoch, String HardwareID) {
 		this.ApplicationName = ApplicationName;
 		this.LicenseName = LicenseName;
 		this.LicenseDescription = LicenseDescription;
 		this.Type = Type;
 		this.ActivationEpoch = ActivationEpoch;
+		this.HardwareID = HardwareID;
 	}
 
 	public String getApplicationName() {
@@ -55,6 +57,14 @@ public class ApiResponse {
 
 	public void setActivationEpoch(long activationEpoch) {
 		ActivationEpoch = activationEpoch;
+	}
+
+	public String getHardwareID() {
+		return HardwareID;
+	}
+
+	public void setHardwareID(String hardwareID) {
+		HardwareID = hardwareID;
 	}
 
 }

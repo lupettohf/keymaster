@@ -37,6 +37,7 @@ public class AuthenticateServelt extends HttpServlet {
 		if (!(ApiKey == null || ApiKey.length() != 32)) {
 			String Username = request.getParameter("username");
 			String Password = request.getParameter("password");
+			String HardwareID = request.getParameter("hwid");
 			PrintWriter out = response.getWriter();
 
 			if ((Username != null && Password != null)) {
@@ -51,14 +52,20 @@ public class AuthenticateServelt extends HttpServlet {
 							for (License lic : _lic) {
 								if (ow.getLicenseID() == lic.getID()) {
 									if (OwnedLicenseDAO.isActive(ow)) {
+										if(HardwareID !=null)
+										{
+											if(ow.getHardwareID().isEmpty())
+											{
+												OwnedLicenseDAO.setHardwareID(ow, HardwareID);
+											}
+										}
 										ApiResponse apiResponse = new ApiResponse(_a.getName(), lic.getName(),
-												lic.getDescription(), lic.getType(), ow.getActivationEpoch());
+												lic.getDescription(), lic.getType(), ow.getActivationEpoch(), ow.getHardwareID());
 										ObjectMapper mapper = new ObjectMapper();
 										String Json = mapper.writeValueAsString(apiResponse);
 										out.print(Json);
 										out.flush();
 									} else {
-										System.out.println("dioboia");
 										response.setStatus(423);
 										/* License exsist but expired */ }
 								}
