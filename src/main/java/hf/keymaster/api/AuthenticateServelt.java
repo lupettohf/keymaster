@@ -54,7 +54,7 @@ public class AuthenticateServelt extends HttpServlet {
 									if (OwnedLicenseDAO.isActive(ow)) {
 										if(HardwareID !=null)
 										{
-											if(ow.getHardwareID().isEmpty())
+											if(ow.getHardwareID() != null)
 											{
 												OwnedLicenseDAO.setHardwareID(ow, HardwareID);
 											}
