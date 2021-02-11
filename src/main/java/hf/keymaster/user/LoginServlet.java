@@ -40,9 +40,9 @@ public class LoginServlet extends HttpServlet {
 			
 			if (ID != -1) {
 				session.setAttribute("user", UserDAO.getUser(ID));
-				response.sendRedirect("user");
+				response.sendRedirect("/user");
 			} else {
-				response.sendRedirect("login");
+				response.sendRedirect("/login");
 				// TODO Mostrare Alert Errore
 			}
 		}
