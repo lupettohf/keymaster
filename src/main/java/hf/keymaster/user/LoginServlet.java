@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 
 		String Username = request.getParameter("username");
 		String Password = request.getParameter("password");
-
+		
 		if (!(Username.isEmpty() || Password.isBlank())) {
 			int ID = UserDAO.loginUser(Username, Password);
 			

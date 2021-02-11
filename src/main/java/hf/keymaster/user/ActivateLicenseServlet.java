@@ -17,8 +17,8 @@ import hf.keymaster.license.key.Key;
 import hf.keymaster.license.key.KeyDAO;
 import hf.keymaster.license.owned.OwnedLicenseDAO;
 
-@WebServlet(name = "ActivateLicenseServelet", urlPatterns = { "/user/licenses/activate" })
-public class ActivateLicenseServelet extends HttpServlet {
+@WebServlet(name = "ActivateLicenseServlet", urlPatterns = { "/user/licenses/activate" })
+public class ActivateLicenseServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
