@@ -34,16 +34,16 @@ public class RegisterServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		if (session.getAttribute("User") != null) {
-			response.sendRedirect("user");
+			response.sendRedirect("/user");
 		}
 
 		if (Validators.ValidateUsername(Username) && Validators.ValidatePassword(Password, Password_confirm)
 				&& Validators.ValidateEmail(EMail)) {
 			if (UserDAO.registerUser(Username, Password, EMail)) {
-				response.sendRedirect("login");
+				response.sendRedirect("/login");
 				// TODO Aggiungere messaggio di successo
 			} else {
-				response.sendRedirect("register");
+				response.sendRedirect("/register");
 				// TODO Aggiungere messaggio di errore
 			}
 		}
