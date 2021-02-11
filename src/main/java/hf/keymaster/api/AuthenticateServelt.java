@@ -39,7 +39,8 @@ public class AuthenticateServelt extends HttpServlet {
 			String Password = request.getParameter("password");
 			String HardwareID = request.getParameter("hwid");
 			PrintWriter out = response.getWriter();
-
+			int Licenses = 0; 
+			
 			if ((Username != null && Password != null)) {
 				int UserID = UserDAO.loginUser(Username, Password);
 
@@ -54,23 +55,32 @@ public class AuthenticateServelt extends HttpServlet {
 									if (OwnedLicenseDAO.isActive(ow)) {
 										if(HardwareID !=null)
 										{
-											if(ow.getHardwareID() != null)
+											if(ow.getHardwareID() == null || ow.getHardwareID().isEmpty())
 											{
 												OwnedLicenseDAO.setHardwareID(ow, HardwareID);
 											}
+										}	
+										Licenses++;
+										
+										if(Licenses == 1 ) {out.print("[");} 
+										if(Licenses > 1) {
+											out.print(",");
 										}
 										ApiResponse apiResponse = new ApiResponse(_a.getName(), lic.getName(),
 												lic.getDescription(), lic.getType(), ow.getActivationEpoch(), ow.getHardwareID());
 										ObjectMapper mapper = new ObjectMapper();
 										String Json = mapper.writeValueAsString(apiResponse);
 										out.print(Json);
-										out.flush();
+										
 									} else {
 										response.setStatus(423);
 										/* License exsist but expired */ }
 								}
+							
 							}
 						}
+						out.print("]");
+						out.flush();
 					} else {
 						response.setStatus(204);
 						/* No license */ }

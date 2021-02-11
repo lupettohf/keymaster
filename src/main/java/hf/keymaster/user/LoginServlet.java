@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if (!(Username.isEmpty() || Password.isBlank())) {
 			int ID = UserDAO.loginUser(Username, Password);
-			
+
 			if (ID != -1) {
 				session.setAttribute("user", UserDAO.getUser(ID));
 				response.sendRedirect("/user");

@@ -6,7 +6,6 @@
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/RegisterServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/application/ListApplicationServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/api/AuthenticateServelt.java
-/Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/ActivateLicenseServelet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/UserProfileServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/license/License.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/application/ApplicationDAO.java
@@ -19,6 +18,7 @@
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/LoginServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/application/ManageApplicationServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/license/ManageLicenseServlet.java
+/Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/ActivateLicenseServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/license/owned/OwnedLicense.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/application/CreateApplicationServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/api/ApiResponse.java
