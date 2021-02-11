@@ -33,7 +33,7 @@ public class UserProfileServletTest {
 				  "pippo@posteitaliane.it",
 				  "Pippo",
 				  "Pluto",
-				  "", false);
+				   false);
 		 
 		 
 		 Mockito.doReturn(u).when(session).getAttribute("user");

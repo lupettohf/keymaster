@@ -28,7 +28,7 @@ public class UserDAO {
 			if (rs.next()) {
 				return new User(rs.getInt("id"), rs.getString("username"), rs.getString("password"),
 						rs.getString("email"), rs.getString("firstname"), rs.getString("lastname"),
-						rs.getString("hardwareid"), rs.getBoolean("isdeveloper"));
+						rs.getBoolean("isdeveloper"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,7 +77,6 @@ public class UserDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		;
 		return false;
 
 	}

@@ -40,7 +40,7 @@ public class OwnedLicenseDAO {
 			preparedStatement.setLong(4, now);
 
 			if (preparedStatement.executeUpdate() == 1) {
-				// TODO Lock key!
+				KeyDAO.activateKey(key.getID());
 				return true;
 			}
 
@@ -66,7 +66,7 @@ public class OwnedLicenseDAO {
 
 			if (rs.next()) {
 				return new OwnedLicense(rs.getInt("id"), rs.getInt("userid"), rs.getInt("licenseid"),
-						rs.getInt("keyid"), rs.getLong("activationepoch"));
+						rs.getInt("keyid"), rs.getLong("activationepoch"), rs.getString("hardwareid"));
 			}
 
 		} catch (Exception e) {
@@ -91,7 +91,7 @@ public class OwnedLicenseDAO {
 
 			while (rs.next()) {
 				ownedLicense.add(new OwnedLicense(rs.getInt("id"), rs.getInt("userid"), rs.getInt("licenseid"),
-						rs.getInt("keyid"), rs.getLong("activationepoch")));
+						rs.getInt("keyid"), rs.getLong("activationepoch"), rs.getString("hardwareid")));
 			}
 
 		} catch (Exception e) {
@@ -103,6 +103,27 @@ public class OwnedLicenseDAO {
 		} else {
 			return ownedLicense;
 		}
+	}
+	
+	public static boolean setHardwareID(OwnedLicense owned, String HardwareID)
+	{
+		String QUERY = "UPDATE ownedlicenses SET hardwareid = ? WHERE id = ?";
+
+		PreparedStatement preparedStatement;
+
+		try {
+			preparedStatement = ConnectionManager.getDBConnection().prepareStatement(QUERY);
+
+			preparedStatement.setString(1, HardwareID);
+			preparedStatement.setInt(2, owned.getID());
+
+			if (preparedStatement.executeUpdate() == 1) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 	public static boolean renewLicense(OwnedLicense owned, Key key) {

@@ -6,20 +6,22 @@ public class OwnedLicense {
 	private int licenseID;
 	private int keyID;
 	private long activationEpoch;
+	private String HardwareID;
 
-	public OwnedLicense(int ID, int userID, int licenseID, int keyID, long activationEpoch) {
+	public OwnedLicense(int ID, int userID, int licenseID, int keyID, long activationEpoch, String HardwareID) {
 		this.ID = ID;
 		this.userID = userID;
 		this.licenseID = licenseID;
 		this.keyID = keyID;
 		this.activationEpoch = activationEpoch;
+		this.HardwareID = HardwareID;
 	}
 
 	public int getID() {
 		return ID;
 	}
 
-	public void setID(int iD) {
+	public void setID(int iD) { 
 		ID = iD;
 	}
 
@@ -53,6 +55,14 @@ public class OwnedLicense {
 
 	public void setUserID(int userID) {
 		this.userID = userID;
+	}
+
+	public String getHardwareID() {
+		return HardwareID;
+	}
+
+	public void setHardwareID(String hardwareID) {
+		HardwareID = hardwareID;
 	}
 
 }

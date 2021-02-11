@@ -25,7 +25,7 @@ public class ActivateLicenseServletTest {
 				  "pippo@posteitaliane.it",
 				  "Pippo",
 				  "Pluto",
-				  "", false);
+				   false);
 		  
 		  Mockito.doReturn(session).when(request).getSession();	
 		  Mockito.when(session.getAttribute("user")).thenReturn(u);

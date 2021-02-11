@@ -7,18 +7,15 @@ public class User {
 	private String EMail;
 	private String FirstName;
 	private String LastName;
-	private String HardwareID;
 	private boolean isDeveloper;
 
-	public User(int ID, String Username, String Password, String EMail, String FirstName, String LastName,
-			String HardwareID, boolean isDeveloper) {
+	public User(int ID, String Username, String Password, String EMail, String FirstName, String LastName, boolean isDeveloper) {
 		this.ID = ID;
 		this.Username = Username;
 		this.Password = Password;
 		this.EMail = EMail;
 		this.FirstName = FirstName;
 		this.LastName = LastName;
-		this.HardwareID = HardwareID;
 		this.isDeveloper = isDeveloper;
 	}
 
@@ -68,14 +65,6 @@ public class User {
 
 	public void setLastName(String lastName) {
 		LastName = lastName;
-	}
-
-	public String getHardwareID() {
-		return HardwareID;
-	}
-
-	public void setHardwareID(String hardwareID) {
-		HardwareID = hardwareID;
 	}
 
 	public boolean isDeveloper() {

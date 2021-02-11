@@ -34,7 +34,7 @@ public class LoginServleTest {
 				  "pippo@posteitaliane.it",
 				  "Pippo",
 				  "Pluto",
-				  "", false);
+				   false);
 		  
 		  Mockito.doReturn(u).when(session).getAttribute("user");
 		  assertDoesNotThrow(() -> servlet.doPost(request, response));
