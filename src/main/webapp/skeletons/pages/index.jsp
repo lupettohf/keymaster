@@ -6,7 +6,7 @@
 	     <div class="jumbotron">
         <h1 class="display-3">Keymaster<br></h1>
         <p class="lead">Keymaster is a licensing-as-a-service (LaaS) platform allowing developers to license their applications without having to worry about the infrastructure.<br></p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Join Today</a></p>
+        <p><a class="btn btn-lg btn-success" href="register" role="button">Join Today</a></p>
       </div>
 
       <div class="row marketing">
