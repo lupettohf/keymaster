@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 
 		if (user != null) {
-			response.sendRedirect("user");
+			response.sendRedirect("/user");
 		}
 		req.include(request, response);
 	}

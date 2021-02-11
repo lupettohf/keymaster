@@ -85,7 +85,7 @@ public class ManagesKeysServlet extends HttpServlet {
 					for (int i = 0; i <= ToGen; i++) {
 						KeyDAO.createKey(_l);
 					}
-					response.sendRedirect("manage");
+					response.sendRedirect("/app/manage/licenses/keys/manage");
 				}
 			}
 

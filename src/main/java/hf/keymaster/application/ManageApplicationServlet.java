@@ -28,7 +28,7 @@ public class ManageApplicationServlet extends HttpServlet {
 			if (!_u.isDeveloper()) {
 				response.sendRedirect("/user");
 			} else {
-				response.sendRedirect("list");
+				response.sendRedirect("/app/list");
 			}
 		} else {
 			response.sendRedirect("/login");
@@ -55,7 +55,7 @@ public class ManageApplicationServlet extends HttpServlet {
 		Application _na = null; // New Application
 
 		if (ApplicationID.isEmpty()) {
-			response.sendRedirect("list");
+			response.sendRedirect("/app/list");
 		}
 		if (!_u.isDeveloper()) {
 			response.sendRedirect("/user");
@@ -65,7 +65,7 @@ public class ManageApplicationServlet extends HttpServlet {
 			_a = ApplicationDAO.getApplication(Integer.parseInt(ApplicationID));
 
 			if (_a.getOwnerID() != _u.getID()) {
-				response.sendRedirect("list");
+				response.sendRedirect("/app/list");
 			} else {
 				session.removeAttribute("app");
 				session.setAttribute("app", _a);

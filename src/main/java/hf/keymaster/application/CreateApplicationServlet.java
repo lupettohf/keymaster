@@ -48,7 +48,7 @@ public class CreateApplicationServlet extends HttpServlet {
 		if (_u != null) {
 			if (_u.isDeveloper()) {
 				if (ApplicationDAO.createApplication(_u, App_Name, App_Description, App_Website)) {
-					response.sendRedirect("list");
+					response.sendRedirect("/app/list");
 				}
 			}
 		}

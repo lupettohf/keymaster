@@ -24,7 +24,7 @@ public class UserProfileServlet extends HttpServlet {
 		User _u = (User) session.getAttribute("user");
 
 		if (_u == null) {
-			response.sendRedirect("login");
+			response.sendRedirect("/login");
 		} else {
 			session.setAttribute("user", _u);
 			req.forward(request, response);
@@ -45,7 +45,7 @@ public class UserProfileServlet extends HttpServlet {
 		User _u = (User) session.getAttribute("user");
 		User _nu = _u;
 		if (_u == null) {
-			response.sendRedirect("login");
+			response.sendRedirect("/login");
 		} else {
 			if (!OldPassword.isEmpty() && Validators.ValidatePassword(NewPasswordRepeat, NewPassword)) {
 				if (UserDAO.loginUser(_u.getUsername(), OldPassword) != -1) {
