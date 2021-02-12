@@ -10,6 +10,7 @@
 		<h1 class="h2">Managing keys for ${license.getName()}
 			(${app.getName()})</h1>
 	</div>
+	<jsp:include page="../alert.jsp" />
 	<div class="card" style="">
 		<div class="card-body">
 			<h4 class="card-title">

@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import hf.keymaster.application.Application;
 import hf.keymaster.license.License;
 import hf.keymaster.user.User;
+import hf.keymaster.utils.Alert;
+import hf.keymaster.utils.Utils;
 
 @WebServlet(name = "ManagesKeysServlet", displayName = "ManagesKeysServlet", urlPatterns = {
 		"/app/manage/licenses/keys/manage" })
@@ -82,10 +84,12 @@ public class ManagesKeysServlet extends HttpServlet {
 			if (KeysToGenerate != null && Action != null) {
 				int ToGen = Integer.parseInt(KeysToGenerate);
 				if ((ToGen > 1 && ToGen <= 500) && Action.equals("generate")) {
-					for (int i = 0; i <= ToGen; i++) {
+					for (int i = 0; i < ToGen; i++) {
 						KeyDAO.createKey(_l);
 					}
 					response.sendRedirect("/app/manage/licenses/keys/manage");
+				} else {
+					Utils.setAlert(new Alert("You can only generate 500 product keys per request.", "danger"), session);
 				}
 			}
 

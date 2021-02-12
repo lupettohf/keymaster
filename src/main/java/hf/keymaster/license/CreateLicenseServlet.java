@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import hf.keymaster.application.Application;
 import hf.keymaster.user.User;
+import hf.keymaster.utils.Alert;
+import hf.keymaster.utils.Utils;
 
 @WebServlet(name = "CreateLicenseServlet", displayName = "CreateLicenseServlet", urlPatterns = {
 		"/app/manage/licenses/new" })
@@ -43,8 +45,10 @@ public class CreateLicenseServlet extends HttpServlet {
 						&& !(License_Duration == null || License_Type == null)) {
 					if (LicenseDAO.createLicense(_a, License_Name, License_Description,
 							Integer.parseInt(License_Duration), Integer.parseInt(License_Type))) {
+						Utils.setAlert(new Alert("License created successfully.", "success"), session);
 						response.sendRedirect("/app/manage/licenses/list");
-						//TODO Fix redirect localhost
+					} else {
+						Utils.setAlert(new Alert("Cannot create license, please check fileds.", "danger"), session);
 					}
 				}
 				req.include(request, response);

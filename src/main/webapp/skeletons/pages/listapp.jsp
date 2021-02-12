@@ -8,6 +8,7 @@
 		class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
 		<h1 class="h2">Active Applications</h1>
 	</div>
+	<jsp:include page="../alert.jsp" />
 	<form class="form-horizontal" action="manage" method="post">
 		<fieldset>
 			<div class="table-responsive">

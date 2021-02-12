@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import hf.keymaster.utils.Alert;
+import hf.keymaster.utils.Utils;
 import hf.keymaster.utils.Validators;
 
 @WebServlet(name = "UserProfileServlet", urlPatterns = { "/user" })
@@ -50,14 +52,27 @@ public class UserProfileServlet extends HttpServlet {
 			if (!OldPassword.isEmpty() && Validators.ValidatePassword(NewPasswordRepeat, NewPassword)) {
 				if (UserDAO.loginUser(_u.getUsername(), OldPassword) != -1) {
 					_nu.setPassword(NewPassword);
-					UserDAO.UpdatePassword(_nu);
+					if(UserDAO.UpdatePassword(_nu))
+					{
+						Utils.setAlert(new Alert("Password updated successfully", "success"), session);
+					} else {
+						Utils.setAlert(new Alert("Cannot update password", "danger"), session);
+					}
+				} else {
+					Utils.setAlert(new Alert("Passwords don't match or you old password is wrong.", "danger"), session);
 				}
 
 			}
 			if (!FirstName.isEmpty() && !LastName.isEmpty()) {
 				_nu.setFirstName(FirstName);
 				_nu.setLastName(LastName);
-				UserDAO.SetFirstLastName(_nu);				
+				if(UserDAO.SetFirstLastName(_nu))
+				{
+					Utils.setAlert(new Alert("Personal details updated.", "success"), session);
+				} else {
+					Utils.setAlert(new Alert("Cannot update your personal details", "danger"), session);
+				}
+				
 			}
 			response.sendRedirect("/user");
 		}

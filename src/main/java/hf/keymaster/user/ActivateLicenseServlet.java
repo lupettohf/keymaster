@@ -16,6 +16,8 @@ import hf.keymaster.license.key.Key;
 
 import hf.keymaster.license.key.KeyDAO;
 import hf.keymaster.license.owned.OwnedLicenseDAO;
+import hf.keymaster.utils.Alert;
+import hf.keymaster.utils.Utils;
 
 @WebServlet(name = "ActivateLicenseServlet", urlPatterns = { "/user/licenses/activate" })
 public class ActivateLicenseServlet extends HttpServlet {
@@ -50,13 +52,16 @@ public class ActivateLicenseServlet extends HttpServlet {
 					License _lic = LicenseDAO.GetLicense(_k.getLicenseID());
 					if (OwnedLicenseDAO.activateLicense(user, _lic, _k)) {
 						response.sendRedirect("/user/licenses");
-						/* TODO: add mesaggio successo */
+						Utils.setAlert(new Alert("License successfully activated.", "success"), session);
 					} else {
-						/* TODO: Error in license activation */ }
-				} else { /* TODO: Key already redeemed */
+						Utils.setAlert(new Alert("Cannot activate this license.", "danger"), session);
+						}
+				} else { 
+					Utils.setAlert(new Alert("This product code was already used.", "danger"), session);
 				}
 			} else {
-				/* TODO: Generic error */ }
+				Utils.setAlert(new Alert("Something went very wrong.", "danger"), session);
+				}
 
 		}
 	}

@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import hf.keymaster.utils.Alert;
+import hf.keymaster.utils.Utils;
+
 @WebServlet(name = "LoginServlet", urlPatterns = { "/login" })
 public class LoginServlet extends HttpServlet {
 
@@ -43,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect("/user");
 			} else {
 				response.sendRedirect("/login");
-				// TODO Mostrare Alert Errore
+				Utils.setAlert(new Alert("Wrong username or password.", "danger"), session);
 			}
 		}
 

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import hf.keymaster.application.Application;
 import hf.keymaster.user.User;
+import hf.keymaster.utils.Alert;
+import hf.keymaster.utils.Utils;
 
 @WebServlet(name = "ManageLicenseServlet", displayName = "ManageLicenseServlet", urlPatterns = {
 		"/app/manage/licenses/manage" })
@@ -67,12 +69,14 @@ public class ManageLicenseServlet extends HttpServlet {
 				_nl.setDescription(LicenseDescription);
 				_nl.setDuration(Integer.parseInt(LicenseDuration));
 				_nl.setType(Integer.parseInt(LicenseType));
-				System.out.print(_nl.toString());
 				if (LicenseDAO.updateLicense(_l, _nl)) {
+					Utils.setAlert(new Alert("License updated successfully.", "success"), session);
 					response.sendRedirect("list");
 				} else {
-					// TODO Handle error
+					Utils.setAlert(new Alert("Cannot update license, please check fileds.", "danger"), session);
 				}
+			} else {
+				Utils.setAlert(new Alert("Cannot update license, please check fileds.", "danger"), session);
 			}
 		}
 		req.include(request, response);
