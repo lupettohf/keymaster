@@ -1,6 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<jsp:body>
+
 <c:if test="${ alert != null }">
 <div class="alert alert-${alert.getType()} alert-dismissible fade show" role="alert">
   ${alert.getMessage()}
@@ -9,5 +9,5 @@
   </button>
 </div>
 </c:if>
-</jsp:body>
+
 <% session.removeAttribute("alert"); %>
