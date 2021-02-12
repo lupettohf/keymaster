@@ -12,7 +12,7 @@ public class ConnectionManager {
 			Class.forName("com.mysql.jdbc.Driver");
 			if (databaseConnection == null) {
 				databaseConnection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/keymaster?useSSL=false",
-						"root", "avbs701kn");
+						"keymaster", "HkGVvELgKztkTBPS");
 				//HkGVvELgKztkTBPS
 			}
 		} catch (SQLException | ClassNotFoundException e) {
