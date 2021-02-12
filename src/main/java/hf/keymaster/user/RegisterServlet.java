@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import hf.keymaster.utils.Alert;
+import hf.keymaster.utils.Utils;
 import hf.keymaster.utils.Validators;
 
 @WebServlet(name = "RegisterServlet", urlPatterns = { "/register" })
@@ -40,9 +42,11 @@ public class RegisterServlet extends HttpServlet {
 		if (Validators.ValidateUsername(Username) && Validators.ValidatePassword(Password, Password_confirm)
 				&& Validators.ValidateEmail(EMail)) {
 			if (UserDAO.registerUser(Username, Password, EMail)) {
-				response.sendRedirect("/login");
+				Utils.setAlert(new Alert("Registred successfully, please login.", "success"), session);
+				response.sendRedirect("/login");				
 				// TODO Aggiungere messaggio di successo
 			} else {
+				Utils.setAlert(new Alert("Username or email already registred.", "error"), session);
 				response.sendRedirect("/register");
 				// TODO Aggiungere messaggio di errore
 			}

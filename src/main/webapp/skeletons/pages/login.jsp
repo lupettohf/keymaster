@@ -4,6 +4,7 @@
 		class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
 		<h1 class="h2">Login</h1>
 	</div>
+	<jsp:include page="../alert.jsp" />
 	<form class="form-horizontal" action="login" method="post">
 		<fieldset>
 			<!-- Text input-->
