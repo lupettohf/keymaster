@@ -28,7 +28,7 @@ public class ActivateLicenseServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		RequestDispatcher req = request.getRequestDispatcher("/skeletons/pages/activatelicense.jsp");
 
-		User user = (User) session.getAttribute("/user");
+		User user = (User) session.getAttribute("user");
 
 		if (user == null) {
 			response.sendRedirect("/login");
