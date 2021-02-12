@@ -46,7 +46,7 @@ public class RegisterServlet extends HttpServlet {
 				response.sendRedirect("/login");				
 				// TODO Aggiungere messaggio di successo
 			} else {
-				Utils.setAlert(new Alert("Username or email already registred.", "error"), session);
+				Utils.setAlert(new Alert("Username or email already registred.", "danger"), session);
 				response.sendRedirect("/register");
 				// TODO Aggiungere messaggio di errore
 			}
