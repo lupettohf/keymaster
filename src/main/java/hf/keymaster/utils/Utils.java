@@ -23,7 +23,6 @@ public class Utils {
 	
 	public static void setAlert(Alert alert, HttpSession session)
 	{
-		session.removeAttribute("alert");
 		session.setAttribute("alert", alert);
 	}
 
