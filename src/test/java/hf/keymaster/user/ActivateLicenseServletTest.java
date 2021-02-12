@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 import org.mockito.Mockito;
 
 public class ActivateLicenseServletTest {

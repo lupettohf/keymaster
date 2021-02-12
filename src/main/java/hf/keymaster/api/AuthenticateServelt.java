@@ -24,9 +24,9 @@ import hf.keymaster.user.UserDAO;
 		"/api/v1/authenticate/*" })
 public class AuthenticateServelt extends HttpServlet {
 	private static final long serialVersionUID = 4730368368886662526L;
-
+	
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String path = request.getPathInfo();
 		String[] paths = path.split("/");
