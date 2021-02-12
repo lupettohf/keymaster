@@ -28,10 +28,10 @@ public class ActivateLicenseServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		RequestDispatcher req = request.getRequestDispatcher("/skeletons/pages/activatelicense.jsp");
 
-		User user = (User) session.getAttribute("user");
+		User user = (User) session.getAttribute("/user");
 
 		if (user == null) {
-			response.sendRedirect("login");
+			response.sendRedirect("/login");
 		}
 		req.include(request, response);
 	}
@@ -55,15 +55,15 @@ public class ActivateLicenseServlet extends HttpServlet {
 						Utils.setAlert(new Alert("License successfully activated.", "success"), session);
 					} else {
 						Utils.setAlert(new Alert("Cannot activate this license.", "danger"), session);
-						response.sendRedirect("/user/license/activate");
+						response.sendRedirect("/user/licenses/activate");
 						}
 				} else { 
 					Utils.setAlert(new Alert("This product code was already used.", "danger"), session);
-					response.sendRedirect("/user/license/activate");
+					response.sendRedirect("/user/licenses/activate");
 				}
 			} else {
 				Utils.setAlert(new Alert("Something went very wrong.", "danger"), session);
-				response.sendRedirect("/user/license/activate");
+				response.sendRedirect("/user/licenses/activate");
 				}
 
 		}
