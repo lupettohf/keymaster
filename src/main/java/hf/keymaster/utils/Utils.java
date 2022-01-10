@@ -2,7 +2,7 @@ package hf.keymaster.utils;
 
 import java.security.SecureRandom;
 
-import javax.servlet.http.HttpSession;
+import  jakarta.servlet.http.HttpSession;
 
 public class Utils {
 	public static String generateSecureString(int lenght) {

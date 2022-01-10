@@ -30,7 +30,7 @@
 				<div class="col-md-4">
 					<textarea id="description" name="description" type="text"
 						placeholder="License Description" class="form-control input-md"
-						required="" value="${license.getDescription()}">
+						required="" value="">${license.getDescription()}
     			</textarea>
 				</div>
 			</div>
@@ -66,5 +66,6 @@
 				value="${license.getID()}">
 		</fieldset>
 	</form>
+	<hr>
 </main>
 <jsp:include page="../footer.jsp" />

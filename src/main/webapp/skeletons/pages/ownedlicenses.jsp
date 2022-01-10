@@ -9,7 +9,7 @@
 		<h1 class="h2">My Licenses</h1>
 	</div>
 	<jsp:include page="../alert.jsp" />
-	<form class="form-horizontal" action="manage" method="post">
+	<form class="form-horizontal" action="licenses" method="post">
 		<fieldset>
 
 			<table class="table" style="">
@@ -27,12 +27,22 @@
 							<th scope="row">${owned.getApplication().getName()}</th>
 							<td>${owned.getLicense().getName()}</td>
 							<td>${owned.getLicense().getDescription()}</td>
+							<c:if test="${owned.getRemaningDays() == 0}">
+							<td>
+								<button id="remove" name="remove" value="${owned.getLicense().getID()}"
+									class="btn btn-danger">Remove</button>
+								<button id="renew" name="renew" value="${owned.getLicense().getID()}"
+									class="btn btn-success">Renew</button>
+							</td>
+							</c:if>
+							<c:if test="${owned.getRemaningDays() > 0}">
 							<td>${owned.getRemaningDays()}</td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</fieldset>
 	</form>
-</main>
+</main>A
 <jsp:include page="../footer.jsp" />

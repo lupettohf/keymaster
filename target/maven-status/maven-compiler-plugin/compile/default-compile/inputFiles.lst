@@ -1,6 +1,7 @@
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/database/ConnectionManager.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/license/key/ManagesKeysServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/utils/Validators.java
+/Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/CreateDeveloperProfileServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/User.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/license/key/DownloadKeysServelt.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/RegisterServlet.java
@@ -8,6 +9,7 @@
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/api/AuthenticateServelt.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/UserProfileServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/license/License.java
+/Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/utils/Alert.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/application/ApplicationDAO.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/LogoutServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/application/Application.java
@@ -19,6 +21,7 @@
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/application/ManageApplicationServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/license/ManageLicenseServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/user/ActivateLicenseServlet.java
+/Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/application/RevokeApplicationServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/license/owned/OwnedLicense.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/application/CreateApplicationServlet.java
 /Users/andrea/eclipse-workspace/keymaster/src/main/java/hf/keymaster/api/ApiResponse.java

@@ -1,16 +1,23 @@
 package hf.keymaster.application;
 
 import java.io.IOException;
+import java.util.List;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
+import  jakarta.servlet.RequestDispatcher;
+import  jakarta.servlet.ServletException;
+import  jakarta.servlet.annotation.WebServlet;
+import  jakarta.servlet.http.HttpServlet;
+import  jakarta.servlet.http.HttpServletRequest;
+import  jakarta.servlet.http.HttpServletResponse;
+import  jakarta.servlet.http.HttpSession;
+import hf.keymaster.license.License;
+import hf.keymaster.license.LicenseDAO;
+import hf.keymaster.license.key.Key;
+import hf.keymaster.license.owned.OwnedLicenseDAO;
 import hf.keymaster.user.User;
+import hf.keymaster.user.UserDAO;
+import hf.keymaster.utils.Alert;
+import hf.keymaster.utils.Utils;
 
 @WebServlet(name = "ManageApplicationServlet", displayName = "ManageApplicationServlet", urlPatterns = {
 		"/app/manage" })
@@ -23,7 +30,6 @@ public class ManageApplicationServlet extends HttpServlet {
 		RequestDispatcher req = request.getRequestDispatcher("/skeletons/pages/manageapp.jsp");
 
 		User _u = (User) session.getAttribute("user");
-
 		if (_u != null) {
 			if (!_u.isDeveloper()) {
 				response.sendRedirect("/user");
@@ -33,7 +39,8 @@ public class ManageApplicationServlet extends HttpServlet {
 		} else {
 			response.sendRedirect("/login");
 		}
-
+		
+		
 		req.include(request, response);
 	}
 
@@ -49,11 +56,13 @@ public class ManageApplicationServlet extends HttpServlet {
 		String ApplicationVersion = request.getParameter("version");
 		String RegenerateApikey = request.getParameter("regenerate_api");
 		String UpdateDetails = request.getParameter("update_details");
-
+		String AddUser = request.getParameter("add_user");
+		String License = request.getParameter("license");
+		String TargetUser = request.getParameter("tgtuser");
 		User _u = (User) session.getAttribute("user");
 		Application _a = null; // Current Application
 		Application _na = null; // New Application
-
+		
 		if (ApplicationID.isEmpty()) {
 			response.sendRedirect("/app/list");
 		}
@@ -69,9 +78,31 @@ public class ManageApplicationServlet extends HttpServlet {
 			} else {
 				session.removeAttribute("app");
 				session.setAttribute("app", _a);
-
+				List<License> _l = LicenseDAO.getLicenses(_a);
+				session.removeAttribute("licenses");
+				session.setAttribute("licenses", _l);
 				if (RegenerateApikey != null) {
 					ApplicationDAO.regenerateAPIKey(_a);
+				}
+				if(AddUser != null)
+				{
+					try {
+						User _tgtUser = (User) UserDAO.getUserByName(TargetUser);
+						License _License = (License) LicenseDAO.GetLicense(Integer.parseInt(License));
+						if(_tgtUser != null)
+						{
+							if(OwnedLicenseDAO.activateLicense(_tgtUser, _License, new Key(-1, _License.getID(), "manual_upgrade", true)))
+								{
+									Utils.setAlert(new Alert("User " + _tgtUser.getUsername() + " has been upgraded to " + _License.getName(), "success"), session);
+								} else {
+									Utils.setAlert(new Alert("Cannot upgrade user " + _tgtUser.getUsername() + "to plan " + _License.getName(), "danger"), session);
+								}
+							
+						}
+					}catch(Exception e) {
+						Utils.setAlert(new Alert("User " + TargetUser.toString() + " is not registred in our system.", "danger"), session);
+					}
+					
 				}
 				if (UpdateDetails != null) {
 					_na = _a;

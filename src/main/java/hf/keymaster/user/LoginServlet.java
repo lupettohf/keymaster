@@ -2,13 +2,13 @@ package hf.keymaster.user;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import  jakarta.servlet.RequestDispatcher;
+import  jakarta.servlet.ServletException;
+import  jakarta.servlet.annotation.WebServlet;
+import  jakarta.servlet.http.HttpServlet;
+import  jakarta.servlet.http.HttpServletRequest;
+import  jakarta.servlet.http.HttpServletResponse;
+import  jakarta.servlet.http.HttpSession;
 
 import hf.keymaster.utils.Alert;
 import hf.keymaster.utils.Utils;
@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 
 		if (user != null) {
-			response.sendRedirect("/user");
+			response.sendRedirect("user");
 		}
 		req.include(request, response);
 	}
@@ -43,9 +43,9 @@ public class LoginServlet extends HttpServlet {
 
 			if (ID != -1) {
 				session.setAttribute("user", UserDAO.getUser(ID));
-				response.sendRedirect("/user");
+				response.sendRedirect("user");
 			} else {
-				response.sendRedirect("/login");
+				response.sendRedirect("login");
 				Utils.setAlert(new Alert("Wrong username or password.", "danger"), session);
 			}
 		}

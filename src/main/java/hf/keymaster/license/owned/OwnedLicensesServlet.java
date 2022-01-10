@@ -4,19 +4,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import  jakarta.servlet.RequestDispatcher;
+import  jakarta.servlet.ServletException;
+import  jakarta.servlet.annotation.WebServlet;
+import  jakarta.servlet.http.HttpServlet;
+import  jakarta.servlet.http.HttpServletRequest;
+import  jakarta.servlet.http.HttpServletResponse;
+import  jakarta.servlet.http.HttpSession;
 
 import hf.keymaster.application.Application;
 import hf.keymaster.application.ApplicationDAO;
 import hf.keymaster.license.License;
 import hf.keymaster.license.LicenseDAO;
 import hf.keymaster.user.User;
+import hf.keymaster.utils.Alert;
+import hf.keymaster.utils.Utils;
 
 @WebServlet(name = "OwnedLicensesServlet", displayName = "OwnedLicensesServlet", urlPatterns = {
 "/user/licenses" })
@@ -42,21 +44,52 @@ public class OwnedLicensesServlet extends HttpServlet{
 		if(_ow != null) { 
 			for(OwnedLicense ow : _ow)
 			{
+				System.out.println("ownedlicese");
+				License license = LicenseDAO.GetLicense(ow.getLicenseID());
+				Application application = ApplicationDAO.getApplication(license.getAppID());
 				
-				_owi.add(new OwnedLicenseInfo(
-						LicenseDAO.GetLicense(ow.getID()),
-						ApplicationDAO.getApplication(LicenseDAO.GetLicense(ow.getID()).getAppID()),
-						ow
-						));
+				if(license !=null && application != null) {
+					_owi.add(new OwnedLicenseInfo(license, application, ow));
+				}				
 			}
 			if(_owi != null)
 			{
+				session.removeAttribute("ownedlicenses");
 				session.setAttribute("ownedlicenses", _owi);
 			}
-			
 		}
-		
 		req.include(request, response);
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {	
+			String License_Remove = request.getParameter("remove");
+			String License_Renew = request.getParameter("renew");
+			HttpSession session = request.getSession();
+			RequestDispatcher req = request.getRequestDispatcher("/skeletons/pages/ownedlicenses.jsp");
 
+			User _u = (User) session.getAttribute("user");
+
+			if (_u == null) {
+				response.sendRedirect("/login");
+			}
+			if(License_Remove !=null)
+			{
+				if(OwnedLicenseDAO.deleteLicense(_u, LicenseDAO.GetLicense(Integer.parseInt(License_Remove))))
+				{
+					Utils.setAlert(new Alert("License removed successfully.", "success"), session);
+				} else {
+					Utils.setAlert(new Alert("Cannot delete license, please contact an administrator", "danger"), session);
+				}
+				
+			}
+			if(License_Renew !=null)
+			{
+				response.sendRedirect("activate/" + License_Renew);
+			}
+			req.include(request, response);
+	}
+	
+	
 }

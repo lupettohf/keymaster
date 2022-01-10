@@ -16,14 +16,20 @@ import hf.keymaster.user.User;
 
 public class OwnedLicenseDAO {
 
-	public static boolean activateLicense(User user, License license, Key key) {
-		Key _tf = KeyDAO.getKey(key.getLicenseKey());
+	public static boolean activateLicense(User user, License license, Key key) {		
+		Key _tf = null;
+		if(key.getID() == -1)
+		{
+			_tf = key;
+		} else {
+			_tf = KeyDAO.getKey(key.getLicenseKey());
+		}
 		long now = Instant.now().toEpochMilli();
 
 		if (_tf == null) {
 			return false;
 		}
-		if (_tf.isRedeemed()) {
+		if (_tf.isRedeemed() && _tf.getID() != -1) {
 			return false;
 		}
 
@@ -40,7 +46,34 @@ public class OwnedLicenseDAO {
 			preparedStatement.setLong(4, now);
 
 			if (preparedStatement.executeUpdate() == 1) {
-				KeyDAO.activateKey(key.getID());
+				if(_tf.getID() != -1)
+				{
+					KeyDAO.activateKey(key.getID());
+				}
+				return true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return false;
+
+	}
+	
+	public static boolean deleteLicense(User user, License license) {		
+		
+		String QUERY = "DELETE FROM ownedlicenses WHERE userid = ? AND id = ?";
+
+		PreparedStatement preparedStatement;
+
+		try {
+			preparedStatement = ConnectionManager.getDBConnection().prepareStatement(QUERY);
+
+			preparedStatement.setInt(1, user.getID());
+			preparedStatement.setInt(2, license.getID());
+
+			if (preparedStatement.executeUpdate() == 1) {			
 				return true;
 			}
 
@@ -127,10 +160,13 @@ public class OwnedLicenseDAO {
 	}
 
 	public static boolean renewLicense(OwnedLicense owned, Key key) {
+		String QUERY = "UPDATE ownedlicenses SET activationepoch = ? WHERE id = ?";
+		
 		Key _tf = KeyDAO.getKey(key.getLicenseKey());
 		OwnedLicense _ow = getOwnedLicense(owned.getID());
 		long now = Instant.now().toEpochMilli();
-
+		PreparedStatement preparedStatement;
+		
 		if (!isActive(owned)) {
 			if (_tf.isRedeemed()) {
 				return false;
@@ -138,8 +174,19 @@ public class OwnedLicenseDAO {
 			if (_tf.getLicenseID() != _ow.getLicenseID()) {
 				return false;
 			}
+			try {
+				preparedStatement = ConnectionManager.getDBConnection().prepareStatement(QUERY);
 
-			// TODO SQL UPDATE License
+				preparedStatement.setLong(1, now);
+				preparedStatement.setInt(2, owned.getID());
+
+				if (preparedStatement.executeUpdate() == 1) {
+					KeyDAO.activateKey(key.getID());
+					return true;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		return false;

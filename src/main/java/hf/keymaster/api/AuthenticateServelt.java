@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import  jakarta.servlet.ServletException;
+import  jakarta.servlet.annotation.WebServlet;
+import  jakarta.servlet.http.HttpServlet;
+import  jakarta.servlet.http.HttpServletRequest;
+import  jakarta.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -31,10 +31,10 @@ public class AuthenticateServelt extends HttpServlet {
 		String path = request.getPathInfo();
 		String[] paths = path.split("/");
 		String ApiKey = paths[1];
-
+		//http://api.piccolu.com/api/v1/authenticate/bvaowiuygfweigfkweifgawefgyiow
 		response.setContentType("application/json");
 
-		if (!(ApiKey == null || ApiKey.length() != 32)) {
+		if (!(ApiKey == null || ApiKey.length() != 32)) {			
 			String Username = request.getParameter("username");
 			String Password = request.getParameter("password");
 			String HardwareID = request.getParameter("hwid");
@@ -71,7 +71,7 @@ public class AuthenticateServelt extends HttpServlet {
 										ObjectMapper mapper = new ObjectMapper();
 										String Json = mapper.writeValueAsString(apiResponse);
 										out.print(Json);
-										
+										out.print("]");
 									} else {
 										response.setStatus(423);
 										/* License exsist but expired */ }
@@ -79,7 +79,7 @@ public class AuthenticateServelt extends HttpServlet {
 							
 							}
 						}
-						out.print("]");
+						
 						out.flush();
 					} else {
 						response.setStatus(204);

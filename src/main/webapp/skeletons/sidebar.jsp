@@ -62,5 +62,17 @@
 						</a></li>
 					</ul>
 				</c:if>
+				<c:if test="${!user.isDeveloper() && user != null}">
+					<h6
+						class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+						<span>Developer Zone</span>
+					</h6>
+
+					<ul class="nav flex-column mb-2">
+						<li class="nav-item"><a class="nav-link" href="/user/upgrade">
+								<span data-feather="terminal"></span> Become a Developer!
+						</a>
+					</ul>
+				</c:if>
 			</div>
 		</nav>

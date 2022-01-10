@@ -11,8 +11,8 @@ public class ConnectionManager {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			if (databaseConnection == null) {
-				databaseConnection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/keymaster?useSSL=false",
-						"keymaster", "HkGVvELgKztkTBPS");
+				databaseConnection = DriverManager.getConnection("jdbc:mysql://192.168.1.200:3306/keymaster?useSSL=false",
+						"external", "external271166");
 				//HkGVvELgKztkTBPS
 			}
 		} catch (SQLException | ClassNotFoundException e) {

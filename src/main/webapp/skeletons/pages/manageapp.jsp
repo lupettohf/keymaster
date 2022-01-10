@@ -33,7 +33,7 @@
 						<textarea id="description" name="description" type="text"
 							placeholder="Application Description"
 							class="form-control input-md" required=""
-							value="${app.getDescription()}">
+							value="">${app.getDescription()}
         			</textarea>
 					</div>
 				</div>
@@ -63,7 +63,9 @@
 							class="btn btn-primary" value="true">Update</button>
 						<a href="manage/licenses/list" id="manage_license"
 							name="manage_license" class="btn btn-primary" value="true">Manage
-							Licenses</a>
+							Licenses</a>				
+						<a href="manage/revoke?id=${app.getID()}" id="manage_revoke"
+							name="manage_license" class="btn btn-danger" value="true">Revoke</a>
 					</div>
 				</div>
 			</div>
@@ -94,5 +96,44 @@
 		</fieldset>
 		<input type="hidden" id="manage" name="manage" value="${app.getID()}">
 	</form>
+	<hr>
+	<form class="form-horizontal" action="manage" method="post">
+	<fieldset>
+	<div class="card" style="">
+				<div class="card-body">
+					<h4 class="card-title">
+						Assign License<br>
+					</h4>
+					<p class="card-text">
+						Regenerating the API key will disable any application with the old
+						key.<br>
+					</p>
+					<div class="row" style="">
+						<div class="col-md-2">
+							<div class="form-group" style="">
+								<select name="license" class="form-control">
+					         	<c:if test="${licenses == null}">
+					         	<option value = "-1" selected>No License Available</option>
+					         	</c:if>
+					         	<c:forEach var="license" items="${licenses}">
+            					<option value = "${license.getID()}" selected>${license.getName()}</option>
+            					</c:forEach>
+         					 </select>
+							</div>
+						</div>
+						<div class="col-md-4">						
+						<input id="tgtuser" name="tgtuser" type="text" placeholder="Username"
+							value="" class="form-control input-md" required="">
+						</div>
+						<div class="col-md-1">
+								<button id="add_user" name="add_user"
+								class="btn btn-primary" value="true">Assign</button>
+						</div>
+					</div>
+				</div>
+			</div>
+	</fieldset>
+	<input type="hidden" id="manage" name="manage" value="${app.getID()}">
+</form>
 </main>
 <jsp:include page="../footer.jsp" />

@@ -71,6 +71,47 @@ public class ApplicationDAO {
 		}
 	}
 
+	public static boolean deleteApplication(Application ToDelete) {
+		String QUERY = "UPDATE applications SET name = ?, description = ?, website = ?, version = ? WHERE id = ?";
+
+		PreparedStatement preparedStatement;
+
+		try {
+			preparedStatement = ConnectionManager.getDBConnection().prepareStatement(QUERY);
+
+			preparedStatement.setInt(0, ToDelete.getID());
+
+			if (preparedStatement.executeUpdate() == 1) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+	
+	public static boolean revokeApplication(Application App)
+	{
+		String QUERY = "UPDATE applications SET ownerid = -1 WHERE id = ?";
+
+		PreparedStatement preparedStatement;
+
+		try {
+			preparedStatement = ConnectionManager.getDBConnection().prepareStatement(QUERY);
+
+			preparedStatement.setInt(1, App.getID());
+
+			if (preparedStatement.executeUpdate() == 1) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+	
 	public static boolean updateApplication(Application Old, Application New) {
 		String QUERY = "UPDATE applications SET name = ?, description = ?, website = ?, version = ? WHERE id = ?";
 
