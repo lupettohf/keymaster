@@ -105,8 +105,7 @@
 						Assign License<br>
 					</h4>
 					<p class="card-text">
-						Regenerating the API key will disable any application with the old
-						key.<br>
+						Manually assign a license to a specific user on the platform.<br>
 					</p>
 					<div class="row" style="">
 						<div class="col-md-2">

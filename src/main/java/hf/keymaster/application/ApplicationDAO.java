@@ -141,7 +141,6 @@ public class ApplicationDAO {
 
 		PreparedStatement preparedStatement;
 		String NewAPI = Utils.generateSecureString(32);
-
 		try {
 			preparedStatement = ConnectionManager.getDBConnection().prepareStatement(QUERY);
 

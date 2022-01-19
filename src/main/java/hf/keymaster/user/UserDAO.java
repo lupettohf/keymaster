@@ -170,5 +170,22 @@ public class UserDAO {
 
 		return -1;
 	}
+	
+	public static void DestroyTestUser()
+	{
+		String QUERY = "DELETE FROM users WHERE username = 'testuser02'";
+
+		PreparedStatement preparedStatement;
+
+		try {
+			preparedStatement = ConnectionManager.getDBConnection().prepareStatement(QUERY);
+
+			preparedStatement.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 
 }
