@@ -26,18 +26,21 @@ public class LoginServleTest {
 	  @Test
 	  public void testLogin()
 	  {
-		  Mockito.when(request.getParameter("username")).thenReturn("pippo");
-		  Mockito.when(request.getParameter("password")).thenReturn("qualunquecosa");
+		  Mockito.when(request.getParameter("username")).thenReturn("testuser02");
+		  Mockito.when(request.getParameter("password")).thenReturn("testuser00");
 		  
-		  User u = new User(1, "pippo", 
-				  "3d7e304a097d1b15771af33bc69527b0d1870ceabf29d4c0d4ca176d6a44666d",
-				  "pippo@posteitaliane.it",
-				  "Pippo",
-				  "Pluto",
+		  User u = new User(1, "testuser02", 
+				  "b674f5285a0587792b1f887e727a29b1808ef510070a37408b3c88e1be4ca71e",
+				  "testuser02@gmail.com",
+				  "Nick",
+				  "Name",
 				   false);
-		  
+		  Mockito.when(request.getSession()).thenReturn(session);
+		  Mockito.when(request.getSession().getAttribute("user")).thenReturn(u);
+
+
 		  Mockito.doReturn(u).when(session).getAttribute("user");
-		 // assertDoesNotThrow(() -> servlet.doPost(request, response));
+		  assertDoesNotThrow(() -> servlet.doPost(request, response));
 	  }
 	  
 }

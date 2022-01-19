@@ -21,14 +21,14 @@ public class RegisterServletTest {
 	public void RegisterServletTest() {
 		 Mockito.doReturn(session).when(request).getSession(); 
 		
-		 Mockito.when(request.getParameter("username")).thenReturn("pippo");
-		 Mockito.when(request.getParameter("password")).thenReturn("test-123");
-		 Mockito.when(request.getParameter("password_confirm")).thenReturn("test-123");
-		 Mockito.when(request.getParameter("email")).thenReturn("test-123@gmail.com");
+		 Mockito.when(request.getParameter("username")).thenReturn("testuser02");
+		 Mockito.when(request.getParameter("password")).thenReturn("testuser00");
+		 Mockito.when(request.getParameter("password_confirm")).thenReturn("testuser02");
+		 Mockito.when(request.getParameter("email")).thenReturn("testuser02@gmail.com");
 		
 		 
 		 
-		 //assertDoesNotThrow(() -> servlet.doPost(request, response));
+		 assertDoesNotThrow(() -> servlet.doPost(request, response));
 	}
 
 }

@@ -61,7 +61,7 @@ public class AuthenticateServelt extends HttpServlet {
 											}
 										}	
 										Licenses++;
-										
+										//Perché importare gson quando si possono fare questi obrobbi? 
 										if(Licenses == 1 ) {out.print("[");} 
 										if(Licenses > 1) {
 											out.print(",");
