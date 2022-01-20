@@ -25,8 +25,12 @@ public class AuthenticateServletTest {
 	private static final HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
 	private static final HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
 	private static final HttpSession session = Mockito.mock(HttpSession.class);
+	private static final ApplicationDAO applicationDAO = Mockito.mock(ApplicationDAO.class);
+	private static final LicenseDAO licenseDAO = Mockito.mock(LicenseDAO.class);
+	private static final OwnedLicenseDAO ownedLicense = Mockito.mock(OwnedLicenseDAO.class);
 	private static final AuthenticateServelt servlet = new AuthenticateServelt();
 	
+	@SuppressWarnings("static-access")
 	@Test
 	public void AuthenticateSevletTest()
 	{
@@ -43,15 +47,15 @@ public class AuthenticateServletTest {
 		  Application a = new Application(1, 1, "Test App", "Test Description", "http://test.com", 0, "test-api");
 		  
 		  License l = new License(1, 1, "Test License", "Test License Description", 30, 1);
-		  List<License> _l = new ArrayList<License>(); _l.add(l);
+		  ArrayList<License> _l = new ArrayList<License>(); _l.add(l);
 				  
 		  OwnedLicense ow = new OwnedLicense(1, 1, 1, 1, 748123423, "123-123-123");
-		  List<OwnedLicense> _ow = new ArrayList<OwnedLicense>(); _ow.add(ow);
+		  ArrayList<OwnedLicense> _ow = new ArrayList<OwnedLicense>(); _ow.add(ow);
 		  
 		  Mockito.when(request.getSession()).thenReturn(session);
 		  Mockito.when(request.getSession().getAttribute("user")).thenReturn(u);
-		  //Mockito.when(ApplicationDAO.getApplication(1)).thenReturn(a);
-			
+		  Mockito.when(licenseDAO.GetLicense(1)).thenReturn(_l);
+		  Mockito.when(applicationDAO.getApplication(1)).thenReturn(a);
 
 		  Mockito.doReturn(u).when(session).getAttribute("user");
 		  assertDoesNotThrow(() -> servlet.doPost(request, response));
