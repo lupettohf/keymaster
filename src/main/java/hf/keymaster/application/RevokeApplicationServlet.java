@@ -1,6 +1,5 @@
 package hf.keymaster.application;
 
-import java.awt.print.Book;
 import java.io.IOException;
 
 import hf.keymaster.user.User;
@@ -19,7 +18,6 @@ import jakarta.servlet.http.HttpSession;
 "/app/manage/revoke" })
 public class RevokeApplicationServlet extends HttpServlet {
 
-@Override
 protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
 HttpSession session = request.getSession();
