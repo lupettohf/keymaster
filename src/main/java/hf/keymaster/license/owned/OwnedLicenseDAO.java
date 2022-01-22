@@ -209,10 +209,12 @@ public class OwnedLicenseDAO {
 	}
 
 	/**
-	 * Metodo che ???
-	 * @param owned
-	 * @param key
-	 * @return
+	 * Metodo che attiva una licenza precedentemente scaduta nel database:
+	 * @param owned oggetto della classe OwnedLicense, rappresenta la licenza posseduta
+	 * @param key oggetto della classe Key, rappresenta la nuova chiave
+	 * @pre key è un oggetto valido non NULL, owned è un oggetto valido non NULL
+	 * @post vengono modificati i dati persistenti nel database
+	 * @return Il sistema restituisce vero se la riattivazione è avvenuta con successo, altrimenti restiruisce falso
 	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
