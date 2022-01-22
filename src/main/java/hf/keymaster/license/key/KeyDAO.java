@@ -12,7 +12,7 @@ import hf.keymaster.utils.Utils;
 public class KeyDAO {
 
 	/**
-	 * Metodo CRUD per la creazione di un chiave, nel database:
+	 * Metodo per la creazione di un chiave, nel database:
 	 * @param license oggetto della classe License, rappresenta la licenza 
 	 * @pre license è un oggetto License valido non NULL
 	 * @post viene resa persistente la chiave nel database

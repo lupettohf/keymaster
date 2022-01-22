@@ -1,8 +1,20 @@
 package hf.keymaster.utils;
 
+/**
+ * 
+ * Classe pubblica dell'oggetto Alert
+ *
+ */
+
 public class Alert {
 	private String Message;
 	private String Type;
+	
+	/**
+	 * Costruttore della classe Alert
+	 * @param Message	rappresenta il messaggio
+	 * @param Type	 	rappresenta il tipo 
+	 */
 	
 	public Alert(String Message, String Type)
 	{

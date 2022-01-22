@@ -12,7 +12,7 @@ import hf.keymaster.utils.Utils;
 public class ApplicationDAO {
 
 	/**
-	 * Metodo CRUD per la creazione di un applicativo, all'interno del database:
+	 * Metodo per la creazione di un applicativo, all'interno del database:
 	 * @param user l'oggetto della classe User, rappresenta l'utente
 	 * @param name rappresenta la Stringa contenente il nome dell'applicazione
 	 * @param description rappresenta la Stringa contente la descrizione dell'applicazione
@@ -93,7 +93,7 @@ public class ApplicationDAO {
 	}
 
 	/**
-	 * Metodo CRUD per l'eliminazione di un applicativo, presente all'interno del database:
+	 * Metodo per l'eliminazione di un applicativo, presente all'interno del database:
 	 * @param ToDelete oggetto della classe Application, rappresenta l'applicativo da rimuovere
 	 * @pre ToDelete è un oggetto Application valido non NULL
 	 * @post viene rimosso un oggetto persistente dal database
@@ -152,7 +152,7 @@ public class ApplicationDAO {
 	}
 	
 	/**
-	 * Metodo CRUD per la modifica di un applicativo, presente all'interno del database:
+	 * Metodo per la modifica di un applicativo, presente all'interno del database:
 	 * @param Old oggetto della classe Application, rappresenta l'applicativo da modificare
 	 * @param New oggetto della classe Application, rappresenta l'applicativo modificato
 	 * @pre Old e New sono oggetti Application validi non NULL
