@@ -7,6 +7,12 @@ import java.sql.SQLException;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
+/**
+ * 
+ * Driver Manager Connection Pool 
+ *
+ */
+
 public class ConnectionManager {
 	private static Connection databaseConnection;
 	private static ComboPooledDataSource cpds = new ComboPooledDataSource();

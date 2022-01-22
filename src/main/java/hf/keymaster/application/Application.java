@@ -1,5 +1,11 @@
 package hf.keymaster.application;
 
+/**
+ * 
+ * Classe pubblica per l'oggetto Application
+ *
+ */
+
 public class Application {
 	private int ID;
 	private int OwnerID;
@@ -8,7 +14,18 @@ public class Application {
 	private String Website;
 	private int Version;
 	private String APIKey;
-
+	
+	/**
+	 * Construttore della classe Application
+	 * @param ID			indentificativo dell'applicativo
+	 * @param OwnerID		indentificativo del possessore
+	 * @param Name			nome dell'applicativo
+	 * @param Description	descrizione dell'applicativo
+	 * @param Website		indirizzo url del sito 
+	 * @param Version		versione del'applicazione
+	 * @param APIKey		apikey dell'applicazione
+	 */
+	
 	public Application(int ID, int OwnerID, String Name, String Description, String Website, int Version,
 			String APIKey) {
 		this.ID = ID;

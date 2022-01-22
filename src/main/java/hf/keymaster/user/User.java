@@ -1,5 +1,11 @@
 package hf.keymaster.user;
 
+/**
+ * 
+ * Classe pubblica dell'oggetto User
+ *
+ */
+
 public class User {
 	private int ID;
 	private String Username;
@@ -9,6 +15,17 @@ public class User {
 	private String LastName;
 	private boolean isDeveloper;
 
+	/**
+	 * Costruttore della classe ser
+	 * @param ID			identificativo dell'utente
+	 * @param Username		username dell'utente
+	 * @param Password		password dell'utente
+	 * @param EMail			email dell'utente
+	 * @param FirstName		nome dell'utente
+	 * @param LastName		cognome dell'utente
+	 * @param isDeveloper	stato dell'utente
+	 */
+	
 	public User(int ID, String Username, String Password, String EMail, String FirstName, String LastName, boolean isDeveloper) {
 		this.ID = ID;
 		this.Username = Username;

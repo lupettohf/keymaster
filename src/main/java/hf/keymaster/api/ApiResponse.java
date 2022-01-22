@@ -1,5 +1,11 @@
 package hf.keymaster.api;
 
+/**
+ * 
+ * Classe pubblica dell'oggetto ApiResponse
+ *
+ */
+
 public class ApiResponse {
 
 	private String ApplicationName;
@@ -9,6 +15,16 @@ public class ApiResponse {
 	private long ActivationEpoch;
 	private String HardwareID;
 
+	/**
+	 * Costruttore della classe ApiResponse
+	 * @param ApplicationName		nome dell'applicazione
+	 * @param LicenseName			nome della licenza
+	 * @param LicenseDescription	descrizione della licenza
+	 * @param Type					tipo di licenza
+	 * @param ActivationEpoch		Unix Timestrap 
+	 * @param HardwareID			identificativo dell'hardware
+	 */
+	
 	public ApiResponse(String ApplicationName, String LicenseName, String LicenseDescription, int Type,
 			long ActivationEpoch, String HardwareID) {
 		this.ApplicationName = ApplicationName;

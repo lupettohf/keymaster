@@ -1,11 +1,25 @@
 package hf.keymaster.license.key;
 
+/**
+ * 
+ * Classe pubblica dell'oggetto Key
+ *
+ */
+
 public class Key {
 	private int ID;
 	private int LicenseID;
 	private String LicenseKey;
 	private boolean Redeemed;
 
+	/**
+	 * Costruttore della classe Key
+	 * @param ID			identificativo della chiave
+	 * @param LicenseID		identificativo della licenza
+	 * @param LicenseKey	chiave della licenza 
+	 * @param Redeemed		stato della licenza
+	 */
+	
 	public Key(int ID, int LicenseID, String LicenseKey, boolean Redeemed) {
 		this.ID = ID;
 		this.LicenseID = LicenseID;

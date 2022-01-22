@@ -1,5 +1,11 @@
 package hf.keymaster.license.owned;
 
+/**
+ * 
+ * Classe pubblica dell'oggetto Owned License
+ *
+ */
+
 public class OwnedLicense {
 	private int ID;
 	private int userID;
@@ -8,6 +14,16 @@ public class OwnedLicense {
 	private long activationEpoch;
 	private String HardwareID;
 
+	/**
+	 * Costruttore della classe Owned License
+	 * @param ID				identificativo della licenza posseduta
+	 * @param userID			identificativo dell'utente
+	 * @param licenseID			identificativo della licenza
+	 * @param keyID				identificativo della chiave
+	 * @param activationEpoch	codice Unix timestrap 
+	 * @param HardwareID		identificativo dell'hardware
+	 */
+	
 	public OwnedLicense(int ID, int userID, int licenseID, int keyID, long activationEpoch, String HardwareID) {
 		this.ID = ID;
 		this.userID = userID;

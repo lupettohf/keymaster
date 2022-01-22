@@ -1,5 +1,11 @@
 package hf.keymaster.license;
 
+/**
+ * 
+ * Classe pubblica dell'oggetto License
+ *
+ */
+
 public class License {
 	private int ID;
 	private int AppID;
@@ -8,6 +14,16 @@ public class License {
 	private int Duration;
 	private int Type;
 
+	/**
+	 * Costruttore della classe License
+	 * @param ID			indetificatore della licenza
+	 * @param AppID			indentificatore dell'applicativo
+	 * @param Name			nome della licenza
+	 * @param Description	descrizione della licenza
+	 * @param Duration		durata della licenza
+	 * @param Type			tipo della licenza
+	 */
+	
 	public License(int ID, int AppID, String Name, String Description, int Duration, int Type) {
 		this.ID = ID;
 		this.AppID = AppID;

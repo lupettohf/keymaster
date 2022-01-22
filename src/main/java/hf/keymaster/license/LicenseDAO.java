@@ -10,6 +10,18 @@ import hf.keymaster.database.ConnectionManager;
 
 public class LicenseDAO {
 
+	/**
+	 * Metodo CRUD per la creazione di una licenza, all'interno del database:
+	 * @param app oggetto della classe Application, rappresenta l'applicativo
+	 * @param Name rappresenta il nome della licenza
+	 * @param Description rappresenta la descrizione della licenza
+	 * @param Duration rappresenta la durata della licenza
+	 * @param Type rappresenta il tipo di licenza
+	 * @pre	  app è un oggetto Application valido, Name, Description sono String valide, Durata è un intero valido, Type è un booleano valido non NULL
+	 * @post  viene resa persistente la licenza nel database 
+	 * @return Il sistema ritorna vero se la licenza è stata creata correttamente altrimenti restituisce un valore falso;
+	 */
+	
 	public static boolean createLicense(Application app, String Name, String Description, int Duration, int Type) {
 		String QUERY = "INSERT INTO licenses (appid, name, description, duration, type) VALUES (?,?,?,?,?)";
 
@@ -37,6 +49,15 @@ public class LicenseDAO {
 		return false;
 	}
 
+	/**
+	 * Metodo getter di una licenza, presente all'interno del database:
+	 * @param id rappresenta l'identificativo della licenza
+	 * @pre id è un int valido non NULL 
+	 * @post se la query trova delle corrispondenze l'oggetto License di ritorno non è NULL
+	 * @return Il sistema ritorna la licenza associata al parametro id passato altrimenti restituisce un valore nullo;
+	 * @throws Exception lancia un eccezione
+	 */
+	
 	public static License GetLicense(int id) {
 		String QUERY = "SELECT * FROM licenses WHERE id = ?";
 
@@ -61,6 +82,14 @@ public class LicenseDAO {
 		return null;
 	}
 
+	/**
+	 * Metodo getter di una lista di licenze, presenti all'interno del database:
+	 * @param app oggetto della classe Application, rappresenta l'applicativo;
+	 * @pre app è oggetto Application valido non NULL
+	 * @post se la query trove corrispondeze la liste delle licenze è piena
+	 * @return Il sistema ritorna una lista di licenze associate all'applicativo passato come parametro; altrimenti lancia un eccezione e restituisce un valore nullo;
+	 */
+	
 	public static List<License> getLicenses(Application app) {
 		String QUERY = "SELECT * FROM licenses WHERE appid = ?";
 
@@ -90,6 +119,15 @@ public class LicenseDAO {
 		}
 	}
 
+	/**
+	 * Metodo CRUD per la modifica di una licenza, all'interno del database:
+	 *
+	 * @param Old oggetto della classe License, rappresenta la licenza da modificare
+	 * @param New oggetto della classe License, rappresenta la licenza modificata
+	 * @pre Old e New sono licenze valide non NULL
+	 * @return Il sistema ritorna vero se la modifica della licenza è avvenuta con successo; altrimenti lancia un eccezione e restituisce un valore falso;
+	 */
+	
 	public static boolean updateLicense(License Old, License New) {
 		String QUERY = "UPDATE licenses SET name = ?, description = ?, duration = ?, type = ? WHERE id = ?";
 
