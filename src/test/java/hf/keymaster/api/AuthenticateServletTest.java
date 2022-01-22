@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -31,13 +32,19 @@ public class AuthenticateServletTest {
 	private OwnedLicenseDAO OwnedLicenseDAO = Mockito.mock(OwnedLicenseDAO.class);
 	private AuthenticateServelt servlet = new AuthenticateServelt();
 	
+	@BeforeAll
+	public static void beforeAll()
+	{
+		Mockito.when(request.getPathInfo()).thenReturn("/test-api/test-api/test-api");
+	}
+	
 	@Test
 	public void AuthenticateSevletTest()
 	{
 		  Mockito.when(request.getParameter("username")).thenReturn("testuser02");
 		  Mockito.when(request.getParameter("password")).thenReturn("testuser00");
 		  Mockito.when(request.getParameter("hwid")).thenReturn("123-123-123");
-		  Mockito.when(request.getPathInfo()).thenReturn("/test-api/test-api/test-api");
+		  
 		  User u = new User(1, "testuser02", 
 				  "b674f5285a0587792b1f887e727a29b1808ef510070a37408b3c88e1be4ca71e",
 				  "testuser02@gmail.com",
@@ -47,8 +54,8 @@ public class AuthenticateServletTest {
 		  
 		  Mockito.when(request.getSession()).thenReturn(session);
 		  Mockito.when(request.getSession().getAttribute("user")).thenReturn(u);
-		 
 		
 		  assertDoesNotThrow(() -> servlet.doPost(request, response));
+		  
 	}
 }

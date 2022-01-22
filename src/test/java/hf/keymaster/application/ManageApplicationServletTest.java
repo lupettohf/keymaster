@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import hf.keymaster.user.User;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -14,13 +15,14 @@ public class ManageApplicationServletTest {
 	private static final HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
 	private static final HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
 	private static final HttpSession session = Mockito.mock(HttpSession.class);
+	private static final RequestDispatcher req = Mockito.mock(RequestDispatcher.class);
 	private static final CreateApplicationServlet servlet = new CreateApplicationServlet();
 	
 	@Test
 	public void ManageApplicationServletTest()
 	{
 		 Mockito.doReturn(session).when(request).getSession(); 
-		 
+		 Mockito.doReturn(req).when(request).getRequestDispatcher("/skeletons/pages/manageapp.jsp"); 
 		 //Dettagli Applicativo
 		 Mockito.when(request.getParameter("manage")).thenReturn("1");
 		 Mockito.when(request.getParameter("name")).thenReturn("Test Application");
@@ -45,7 +47,7 @@ public class ManageApplicationServletTest {
 		 
 		 Mockito.doReturn(u).when(session).getAttribute("user");
 		 assertDoesNotThrow(() -> servlet.doPost(request, response));
-		 
+		 assertDoesNotThrow(() -> servlet.doGet(request, response));
 		 
 	}
 }

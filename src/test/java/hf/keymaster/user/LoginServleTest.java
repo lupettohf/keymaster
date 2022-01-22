@@ -3,6 +3,7 @@ package hf.keymaster.user;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import  jakarta.servlet.FilterChain;
+import jakarta.servlet.RequestDispatcher;
 import  jakarta.servlet.http.HttpServletRequest;
 import  jakarta.servlet.http.HttpServletResponse;
 import  jakarta.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ public class LoginServleTest {
 	  private static final HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
 	  private static final HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
 	  private static final HttpSession session = Mockito.mock(HttpSession.class);
+	  private static final RequestDispatcher req = Mockito.mock(RequestDispatcher.class);
 	  private static final LoginServlet servlet = new LoginServlet();
 
 	  @BeforeAll
@@ -26,6 +28,7 @@ public class LoginServleTest {
 	  @Test
 	  public void testLogin()
 	  {
+		  Mockito.doReturn(req).when(request).getRequestDispatcher("/skeletons/pages/login.jsp"); 
 		  Mockito.when(request.getParameter("username")).thenReturn("testuser02");
 		  Mockito.when(request.getParameter("password")).thenReturn("testuser00");
 		  
@@ -40,6 +43,7 @@ public class LoginServleTest {
 
 
 		  Mockito.doReturn(u).when(session).getAttribute("user");
+		  assertDoesNotThrow(() -> servlet.doGet(request, response));
 		  assertDoesNotThrow(() -> servlet.doPost(request, response));
 	  }
 	  
