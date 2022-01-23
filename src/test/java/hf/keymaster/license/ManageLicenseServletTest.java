@@ -22,7 +22,7 @@ public class ManageLicenseServletTest {
 	private void ManageLicenseServletTest()
 	{
 		 Mockito.doReturn(session).when(request).getSession(); 
-		 Mockito.doReturn(req).when(request).getRequestDispatcher("/skeletons/pages/newlicense.jsp"); 
+		 Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString()); 
 		 Mockito.when(request.getParameter("name")).thenReturn("Test License");
 		 Mockito.when(request.getParameter("description")).thenReturn("Test License Description");
 		 Mockito.when(request.getParameter("type")).thenReturn("1");

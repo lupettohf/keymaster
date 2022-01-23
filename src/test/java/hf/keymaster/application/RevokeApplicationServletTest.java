@@ -24,12 +24,13 @@ public class RevokeApplicationServletTest {
 	{
 	
 		 Mockito.doReturn(session).when(request).getSession(); 
-		 Mockito.doReturn(req).when(request).getRequestDispatcher("/skeletons/pages/manageapp.jsp"); 
-		 Mockito.when(request.getRequestDispatcher("/skeletons/pages/manageapp.jsp")).thenReturn(req);
+		 Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString()); 
+		 Mockito.when(request.getRequestDispatcher(Mockito.anyString())).thenReturn(req);
 		 Mockito.when(request.getParameter("manage")).thenReturn("1");
 		 Mockito.when(request.getParameter("name")).thenReturn("Test Application");
 		 Mockito.when(request.getParameter("userpass")).thenReturn("testuser00");
 		 Mockito.when(request.getParameter("revoke")).thenReturn("1");
+		
 		 User u = new User(1, "testuser02", 
 				  "b674f5285a0587792b1f887e727a29b1808ef510070a37408b3c88e1be4ca71e",
 				  "testuser00@gmail.com",

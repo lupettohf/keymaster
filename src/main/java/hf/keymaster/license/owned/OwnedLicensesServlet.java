@@ -44,7 +44,7 @@ public class OwnedLicensesServlet extends HttpServlet{
 		if(_ow != null) { 
 			for(OwnedLicense ow : _ow)
 			{
-				System.out.println("ownedlicese");
+				
 				License license = LicenseDAO.GetLicense(ow.getLicenseID());
 				Application application = ApplicationDAO.getApplication(license.getAppID());
 				

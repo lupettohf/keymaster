@@ -22,14 +22,15 @@ public class ActivateLicenseServletTest {
 	@Test
 	public void ActivateLicenseServletTest() {
 		  Mockito.when(request.getPathInfo()).thenReturn("/license-key/license-key/license-key");
-		  Mockito.doReturn(req).when(request).getRequestDispatcher("/skeletons/pages/activatelicense.jsp"); 
+		  Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString()); 
 		  Mockito.when(request.getParameter("ProductKey")).thenReturn("test-123-test");
-		  User u = new User(1, "pippo", 
-				  "3d7e304a097d1b15771af33bc69527b0d1870ceabf29d4c0d4ca176d6a44666d",
-				  "pippo@posteitaliane.it",
-				  "Pippo",
-				  "Pluto",
-				   false);
+		  
+		  User u = new User(1, "testuser02", 
+					  "b674f5285a0587792b1f887e727a29b1808ef510070a37408b3c88e1be4ca71e",
+					  "testuser00@gmail.com",
+					  "Nick",
+					  "Name",
+					   true);
 		  
 		  Mockito.doReturn(session).when(request).getSession();	
 		  Mockito.when(session.getAttribute("user")).thenReturn(u);

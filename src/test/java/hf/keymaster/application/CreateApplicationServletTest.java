@@ -22,7 +22,7 @@ public class CreateApplicationServletTest {
 	public void CreateApplicationServletTest()
 	{
 		 Mockito.doReturn(session).when(request).getSession(); 
-		 Mockito.doReturn(req).when(request).getRequestDispatcher("/skeletons/pages/createapp.jsp"); 
+		 Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString()); 
 		 Mockito.when(request.getParameter("name")).thenReturn("Test Application");
 		 Mockito.when(request.getParameter("description")).thenReturn("Test Application Description");
 		 Mockito.when(request.getParameter("website")).thenReturn("https://example.com/product");

@@ -28,7 +28,7 @@ public class LoginServleTest {
 	  @Test
 	  public void testLogin()
 	  {
-		  Mockito.doReturn(req).when(request).getRequestDispatcher("/skeletons/pages/login.jsp"); 
+		  Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString());  
 		  Mockito.when(request.getParameter("username")).thenReturn("testuser02");
 		  Mockito.when(request.getParameter("password")).thenReturn("testuser00");
 		  

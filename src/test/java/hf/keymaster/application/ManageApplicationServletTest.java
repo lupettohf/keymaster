@@ -22,7 +22,7 @@ public class ManageApplicationServletTest {
 	public void ManageApplicationServletTest()
 	{
 		 Mockito.doReturn(session).when(request).getSession(); 
-		 Mockito.doReturn(req).when(request).getRequestDispatcher("/skeletons/pages/manageapp.jsp"); 
+		 Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString());  
 		 //Dettagli Applicativo
 		 Mockito.when(request.getParameter("manage")).thenReturn("1");
 		 Mockito.when(request.getParameter("name")).thenReturn("Test Application");

@@ -18,7 +18,7 @@ public class CreateDeveloperProfileServletTest {
 	private static final CreateDeveloperProfileServlet servlet = new CreateDeveloperProfileServlet();
 	@Test
 	public void CreateDeveloperProfileServletTest() {
-		 Mockito.doReturn(req).when(request).getRequestDispatcher("/skeletons/pages/upgrade.jsp"); 
+		 Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString()); 
 		 Mockito.doReturn(session).when(request).getSession(); 
 			
 		 Mockito.when(request.getParameter("username")).thenReturn("testuser02");

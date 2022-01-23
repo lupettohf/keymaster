@@ -21,7 +21,7 @@ public class UserProfileServletTest {
 	@Test
 	public void UserProfileServletTest() {
 		 Mockito.doReturn(session).when(request).getSession(); 
-		 Mockito.doReturn(req).when(request).getRequestDispatcher("/skeletons/pages/user.jsp"); 
+		 Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString());  
 		 Mockito.when(request.getParameter("username")).thenReturn("testuser02");
 		 Mockito.when(request.getParameter("oldpassword")).thenReturn("testuser00");
 		 Mockito.when(request.getParameter("password")).thenReturn("testuser01");
