@@ -27,6 +27,7 @@ public class RevokeApplicationServletTest {
 		 Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString()); 
 		 Mockito.when(request.getRequestDispatcher(Mockito.anyString())).thenReturn(req);
 		 Mockito.when(request.getParameter("manage")).thenReturn("1");
+		 Mockito.when(request.getParameter("id")).thenReturn("1");
 		 Mockito.when(request.getParameter("name")).thenReturn("Test Application");
 		 Mockito.when(request.getParameter("userpass")).thenReturn("testuser00");
 		 Mockito.when(request.getParameter("revoke")).thenReturn("1");

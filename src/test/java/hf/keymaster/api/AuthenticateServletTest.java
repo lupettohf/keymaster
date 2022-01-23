@@ -38,7 +38,9 @@ public class AuthenticateServletTest {
 	@BeforeAll
 	public static void beforeAll()
 	{
-		Mockito.when(request.getPathInfo()).thenReturn("/test-api/test-api/test-api");
+		Mockito.when(request.getPathInfo()).thenReturn("/T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo\n"
+				+ "/T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo\n"
+				+ "/T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo\n");
 	}
 	
 	@Test
@@ -47,6 +49,7 @@ public class AuthenticateServletTest {
 		  Mockito.when(request.getParameter("username")).thenReturn("testuser02");
 		  Mockito.when(request.getParameter("password")).thenReturn("testuser00");
 		  Mockito.when(request.getParameter("hwid")).thenReturn("123-123-123");
+		  Mockito.when(request.getParameter("apikey")).thenReturn("T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo");
 		  Mockito.when(response.getWriter()).thenReturn(out); 
 		  
 		  User u = new User(1, "testuser02", 

@@ -19,15 +19,11 @@ public class LoginServleTest {
 	  private static final HttpSession session = Mockito.mock(HttpSession.class);
 	  private static final RequestDispatcher req = Mockito.mock(RequestDispatcher.class);
 	  private static final LoginServlet servlet = new LoginServlet();
-
-	  @BeforeAll
-	  public static void beforeAll() {
-	    Mockito.doReturn(session).when(request).getSession();
-	  }
 	  
 	  @Test
-	  public void testLogin()
+	  public void LoginServleTest()
 	  {
+		    Mockito.doReturn(session).when(request).getSession();
 		  Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString());  
 		  Mockito.when(request.getParameter("username")).thenReturn("testuser02");
 		  Mockito.when(request.getParameter("password")).thenReturn("testuser00");

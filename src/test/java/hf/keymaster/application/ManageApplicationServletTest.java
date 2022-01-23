@@ -2,10 +2,19 @@ package hf.keymaster.application;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
+import hf.keymaster.license.License;
+import hf.keymaster.license.LicenseDAO;
+import hf.keymaster.license.owned.OwnedLicense;
+import hf.keymaster.license.owned.OwnedLicenseDAO;
 import hf.keymaster.user.User;
+import hf.keymaster.user.UserDAO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -43,7 +52,20 @@ public class ManageApplicationServletTest {
 				  "Nick",
 				  "Name",
 				   true);
-		 
+		
+		  try (MockedStatic<ApplicationDAO> mockApplicationDAO = Mockito.mockStatic(ApplicationDAO.class)) {
+			  
+			  Application a = new Application(1,1,"Test Application", "Test Desctription", "https://example.com", 0, "test-api");
+			  
+			  mockApplicationDAO.when(() -> ApplicationDAO.getApplication(Mockito.anyString())).thenReturn(a);
+		  }
+		  try (MockedStatic<LicenseDAO> mockLicenseDAO = Mockito.mockStatic(LicenseDAO.class)) {
+			  Application a = new Application(1,1,"Test Application", "Test Desctription", "https://example.com", 0, "test-api");
+			  License l = new License(1, 1, "Test License", "Test Description", 1, 30);
+			  List<License> _l = new ArrayList<License>(); _l.add(l);
+			  
+			  mockLicenseDAO.when(() -> LicenseDAO.getLicenses(a)).thenReturn(_l);
+		  }
 		 
 		 Mockito.doReturn(u).when(session).getAttribute("user");
 		 assertDoesNotThrow(() -> servlet.doPost(request, response));

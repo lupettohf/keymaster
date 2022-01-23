@@ -28,9 +28,14 @@ public class AuthenticateServelt extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String APIparam = request.getParameter("apikey");
 		String path = request.getPathInfo();
 		String[] paths = path.split("/");
 		String ApiKey = paths[1];
+		if(APIparam != null)
+		{
+			ApiKey = APIparam;
+		}
 		//http://api.piccolu.com/api/v1/authenticate/bvaowiuygfweigfkweifgawefgyiow
 		response.setContentType("application/json");
 

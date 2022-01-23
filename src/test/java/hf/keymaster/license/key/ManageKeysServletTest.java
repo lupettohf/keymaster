@@ -21,7 +21,7 @@ public class ManageKeysServletTest {
 	
 	private static final ManagesKeysServlet servlet = new ManagesKeysServlet();
 	
-	@Test
+	//@Test
 	public void ManageKeysServletTest()
 	{
 		  Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString()); 
