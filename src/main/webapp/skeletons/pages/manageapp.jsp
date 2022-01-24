@@ -98,7 +98,7 @@
 		 <div class="my-3 p-3 bg-white rounded box-shadow">
         <h6 class="border-bottom border-gray pb-2 mb-0">API Documentation<br></h6>
         
-        <div class="media text-muted pt-3"><div class="m-5"><div class="row" style=""><div class="col-sm-4"><h3 style="font-weight: 500;">Endpoint<br></h3></div><div class="        1 col-sm-12">https://keymaster.monocul.us/api/v1/authenticate/</div></div><br></div><span class="badge badge-primary" style="margin-right: 5px;">POST</span>
+        <div class="media text-muted pt-3"><div class="m-5"><div class="row" style=""><div class="col-sm-4"><h3 style="font-weight: 500;">Endpoint<br></h3></div><div class="        1 col-sm-12">https://keymaster.monocul.us/api/v1/authenticate/${app.getAPIKey()}</div></div><br></div><span class="badge badge-primary" style="margin-right: 5px;">POST</span>
           
           <ul class="list-group" style=""><strong class="d-block text-gray-dark">
   <li class="list-group-item">
@@ -146,7 +146,7 @@
     
 
       
-    </small></small></main><small><small>
+    </small></small><small><small>
 				</div>
 			</div>
 			
