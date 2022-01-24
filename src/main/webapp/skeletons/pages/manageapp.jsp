@@ -95,18 +95,7 @@
 			</div>
 			<div class="card" style="">
 				<div class="card-body">
-					<h4 class="card-title">
-						API Documentation<br>
-					</h4>
-					<p class="card-text">
-						One simple request to fetch user licenses.<br>
-					</p>
-					<div class="row" style="">
-						
-					</div>
-				</div>
-			</div>
-			 <div class="my-3 p-3 bg-white rounded box-shadow">
+		 <div class="my-3 p-3 bg-white rounded box-shadow">
         <h6 class="border-bottom border-gray pb-2 mb-0">API Documentation<br></h6>
         
         <div class="media text-muted pt-3"><div class="m-5"><div class="row" style=""><div class="col-sm-4"><h3 style="font-weight: 500;">Endpoint<br></h3></div><div class="        1 col-sm-12">https://keymaster.monocul.us/api/v1/authenticate/</div></div><br></div><span class="badge badge-primary" style="margin-right: 5px;">POST</span>
@@ -158,6 +147,9 @@
 
       
     </small></small></main><small><small>
+				</div>
+			</div>
+			
 		</fieldset>
 		<input type="hidden" id="manage" name="manage" value="${app.getID()}">
 	</form>
