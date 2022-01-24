@@ -93,6 +93,71 @@
 					</div>
 				</div>
 			</div>
+			<div class="card" style="">
+				<div class="card-body">
+					<h4 class="card-title">
+						API Documentation<br>
+					</h4>
+					<p class="card-text">
+						One simple request to fetch user licenses.<br>
+					</p>
+					<div class="row" style="">
+						
+					</div>
+				</div>
+			</div>
+			 <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h6 class="border-bottom border-gray pb-2 mb-0">API Documentation<br></h6>
+        
+        <div class="media text-muted pt-3"><div class="m-5"><div class="row" style=""><div class="col-sm-4"><h3 style="font-weight: 500;">Endpoint<br></h3></div><div class="        1 col-sm-12">https://keymaster.monocul.us/api/v1/authenticate/</div></div><br></div><span class="badge badge-primary" style="margin-right: 5px;">POST</span>
+          
+          <ul class="list-group" style=""><strong class="d-block text-gray-dark">
+  <li class="list-group-item">
+    <span class="badge" style="">username</span> Username&nbsp;
+  </li>
+  <li class="list-group-item">
+    <span class="badge">password</span> Password
+  </li>
+  <li class="list-group-item">
+    <span class="badge" style="">hwid</span> Hardware ID  </li>
+</strong></ul><br><p></p>
+        </div>
+        
+        <hr style=""><div class="container" style=""><div class="m-5"><div class="row" style=""><div class="col-sm-4  col-3"><h3 style="margin-top: 0px;">Response <small style="width: auto; height: auto; font-family: Courier New;">(application/json)<small><br></small></small></h3></div><div class="  2 1     col-5 1 col-sm-12">
+        <p>User with a single license:</p>
+        <code>
+          [<br>{<br>
+      &nbsp;&nbsp;"activationEpoch": 1643046225628,<br>
+      &nbsp;&nbsp;"applicationName": "Test Application",<br>
+      &nbsp;&nbsp;"licenseName": "Test License",<br>
+      &nbsp;&nbsp;"licenseDescription": "Test License Description",<br>
+      &nbsp;&nbsp;"type": 1,<br>
+    &nbsp;&nbsp;"hardwareID": "123-123-123"<br>
+}<br>]
+        </code>
+        <p>User with a with multiple licenses:<br></p>
+        <code>
+          [<br>{<br>
+      &nbsp;&nbsp;"activationEpoch": 1643046225628,<br>
+      &nbsp;&nbsp;"applicationName": "Test Application",<br>
+      &nbsp;&nbsp;"licenseName": "Test License",<br>
+      &nbsp;&nbsp;"licenseDescription": "Test License Description",<br>
+      &nbsp;&nbsp;"type": 1,<br>
+    &nbsp;&nbsp;"hardwareID": "123-123-123"<br></code><div><code>
+},</code></div><div><code>{<br>
+      &nbsp;&nbsp;"activationEpoch": 1643046225629,<br>
+      &nbsp;&nbsp;"applicationName": "Test Application",<br>
+      &nbsp;&nbsp;"licenseName": "Test License Bonze",<br>
+      &nbsp;&nbsp;"licenseDescription": "Test Bronze License Description",<br>
+      &nbsp;&nbsp;"type": 2,<br>
+    &nbsp;&nbsp;"hardwareID": "123-123-123"<br>
+}</code><code></code></div><div><code></code></div><code>]
+        </code>
+        <div class="form-group" style=""></div></div></div></div></div></div><small><small>
+    
+
+      
+    </small></small></main><small><small>
 		</fieldset>
 		<input type="hidden" id="manage" name="manage" value="${app.getID()}">
 	</form>

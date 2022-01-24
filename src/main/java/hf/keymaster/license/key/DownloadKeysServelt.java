@@ -32,7 +32,7 @@ public class DownloadKeysServelt extends HttpServlet {
 		if (!(_u == null || _l == null) && (_u.getID() == _a.getOwnerID() && _l.getAppID() == _a.getID())) {
 			response.setContentType("text/plain");
 			response.setHeader("Content-disposition", "attachment; filename=keys.csv");
-			List<Key> _k = KeyDAO.getKeys(_l, false);
+			List<Key> _k = KeyDAO.getKeys(_l, true);
 
 			StringBuilder sb = new StringBuilder();
 			OutputStream outputStream = response.getOutputStream();

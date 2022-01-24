@@ -4,8 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import hf.keymaster.application.Application;
@@ -23,10 +26,10 @@ public class DownloadKeysServletTest {
 	private static final HttpSession session = Mockito.mock(HttpSession.class);
 	private static final RequestDispatcher req = Mockito.mock(RequestDispatcher.class);
 	private static final ServletOutputStream outputStream = Mockito.mock(ServletOutputStream.class);
-	
+	private static final MockedStatic<KeyDAO> mockKeyDAO = Mockito.mockStatic(KeyDAO.class);
 	private static final DownloadKeysServelt servlet = new DownloadKeysServelt();
 	
-	//@Test
+	@Test
 	public void DownloadKeysServletTest() throws IOException
 	{
 		  Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString()); 
@@ -44,6 +47,22 @@ public class DownloadKeysServletTest {
 		  Mockito.when(session.getAttribute("user")).thenReturn(u);
 		  Mockito.when(session.getAttribute("app")).thenReturn(a);
 		  Mockito.when(session.getAttribute("license")).thenReturn(l);
+		  List<Key> keys = new ArrayList<Key>();
+		  
+		  for(int i = 1; i <= 10; i++)
+		  {
+			  Key _k;
+			  if(i % 2 == 0)
+			  {
+				   _k = new Key(1, i, "123-123-123", false);
+			  } else {
+				   _k = new Key(1, i, "123-123-123", true);
+			  }
+			  
+			  keys.add(_k);
+		  }
+		  mockKeyDAO.when(() -> KeyDAO.getKeys(l, false)).thenReturn(keys);
 		  assertDoesNotThrow(() -> servlet.doGet(request, response));
+		  mockKeyDAO.close();
 	}
 }

@@ -2,9 +2,15 @@ package hf.keymaster.license;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-import org.mockito.Mockito;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.junit.Test;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
+import hf.keymaster.license.LicenseDAO;
 import hf.keymaster.application.Application;
+import hf.keymaster.application.ApplicationDAO;
 import hf.keymaster.user.User;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,9 +23,11 @@ public class ManageLicenseServletTest {
 	private static final HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
 	private static final HttpSession session = Mockito.mock(HttpSession.class);
 	private static final RequestDispatcher req = Mockito.mock(RequestDispatcher.class);
-	private static final CreateLicenseServlet servlet = new CreateLicenseServlet();
+	private static final ManageLicenseServlet servlet = new ManageLicenseServlet();
+	private static final MockedStatic<LicenseDAO> mockLicenseDAO = Mockito.mockStatic(LicenseDAO.class);
 	
-	private void ManageLicenseServletTest()
+	@Test
+	public void ManageLicenseServletTest()
 	{
 		 Mockito.doReturn(session).when(request).getSession(); 
 		 Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString()); 
@@ -36,10 +44,18 @@ public class ManageLicenseServletTest {
 				  "Name",
 				   true);
 		 Application a = new Application(1, 1, "Test Application", "Test Description", "https://example.com", 0, "test-api");
+		 License l = new License(1, 1, "Test License", "Test Description", 1, 30);
+		 License _l = new License(1, 1, "Test License", "Test Description Updated", 2, 90);
+		 List<License> licenses = new ArrayList<License>(); licenses.add(l);
+		 mockLicenseDAO.when(() -> LicenseDAO.getLicense(1)).thenReturn(l);
+		 mockLicenseDAO.when(() -> LicenseDAO.updateLicense(l, _l)).thenReturn(true);
 		 
+		 Mockito.when(session.getAttribute("user")).thenReturn(u);
+		 Mockito.when(session.getAttribute("app")).thenReturn(a);
 		 Mockito.doReturn(u).when(session).getAttribute("user");
 		 Mockito.doReturn(a).when(session).getAttribute("app");
-		 assertDoesNotThrow(() -> servlet.doPost(request, response));
 		 assertDoesNotThrow(() -> servlet.doGet(request, response));
+		 assertDoesNotThrow(() -> servlet.doPost(request, response));	 
+		 mockLicenseDAO.close();
 	}
 }

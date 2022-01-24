@@ -58,7 +58,7 @@ public class LicenseDAO {
 	 * @throws Exception lancia un eccezione
 	 */
 	
-	public static License GetLicense(int id) {
+	public static License getLicense(int id) {
 		String QUERY = "SELECT * FROM licenses WHERE id = ?";
 
 		PreparedStatement preparedStatement;

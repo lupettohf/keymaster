@@ -8,6 +8,7 @@ import  jakarta.servlet.http.HttpServletResponse;
 import  jakarta.servlet.http.HttpSession;
 
 import org.junit.Test;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 public class UserProfileServletTest {
@@ -16,6 +17,7 @@ public class UserProfileServletTest {
 	private static final HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
 	private static final HttpSession session = Mockito.mock(HttpSession.class);
 	private static final RequestDispatcher req = Mockito.mock(RequestDispatcher.class);
+	private static final MockedStatic<UserDAO> mockUserDAO = Mockito.mockStatic(UserDAO.class);
 	private static final UserProfileServlet servlet = new UserProfileServlet();
 	
 	@Test
@@ -37,10 +39,13 @@ public class UserProfileServletTest {
 				   false);
 		 
 		 
+		 mockUserDAO.when(() -> UserDAO.loginUser(Mockito.anyString(), Mockito.anyString())).thenReturn(1);
+		 mockUserDAO.when(() -> UserDAO.UpdatePassword(u)).thenReturn(true);
 		 Mockito.doReturn(u).when(session).getAttribute("user");
 		 
 		 assertDoesNotThrow(() -> servlet.doGet(request, response));
 		 assertDoesNotThrow(() -> servlet.doPost(request, response));
+		 mockUserDAO.close();
 	} 
 
 }

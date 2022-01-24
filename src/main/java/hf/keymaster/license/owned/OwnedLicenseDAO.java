@@ -261,7 +261,7 @@ public class OwnedLicenseDAO {
 	
 	public static boolean isActive(OwnedLicense owned) {
 		OwnedLicense _ow = getOwnedLicense(owned.getID());
-		License _lic = LicenseDAO.GetLicense(_ow.getLicenseID());
+		License _lic = LicenseDAO.getLicense(_ow.getLicenseID());
 		long now = Instant.now().toEpochMilli();
 		int elapsed = (int) TimeUnit.MILLISECONDS.toDays(now - owned.getActivationEpoch());
 		

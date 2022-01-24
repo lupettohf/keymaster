@@ -3,6 +3,7 @@ package hf.keymaster.application;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.Test;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import hf.keymaster.user.User;
@@ -16,6 +17,7 @@ public class CreateApplicationServletTest {
 	private static final HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
 	private static final RequestDispatcher req = Mockito.mock(RequestDispatcher.class);
 	private static final HttpSession session = Mockito.mock(HttpSession.class);
+	private static final MockedStatic<ApplicationDAO> mockApplicationDAO = Mockito.mockStatic(ApplicationDAO.class);
 	private static final CreateApplicationServlet servlet = new CreateApplicationServlet();
 	
 	@Test
@@ -33,9 +35,10 @@ public class CreateApplicationServletTest {
 				  "Name",
 				   true);
 		 
-		 
+		 mockApplicationDAO.when(() -> ApplicationDAO.createApplication(u, "Test Application", "Test Description", "https://example.com/product")).thenReturn(true);
 		 Mockito.doReturn(u).when(session).getAttribute("user");
 		 assertDoesNotThrow(() -> servlet.doPost(request, response));
 		 assertDoesNotThrow(() -> servlet.doGet(request, response));
+		 mockApplicationDAO.close();
 	}
 }
