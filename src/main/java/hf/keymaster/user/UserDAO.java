@@ -14,7 +14,6 @@ public class UserDAO {
 	/**
 	 * Metodo hash che permette di formattare la password in chiave hash256:
 	 * @param Password rappresenta la password da codificare
-	 * @pre   Password è una stringa valida non NULL
 	 * @return Il sistema restituisce la password codificata in sha256
 	 */
 	
@@ -25,7 +24,6 @@ public class UserDAO {
 	/**
 	 * Metodo getter che restituisce un utente presente presente nel database:
 	 * @param ID valore intero, rappresenta l'identificativo 
-	 * @pre ID è un Int valido e non NULL
 	 * @return Il sistema restituisce l'utente associato al parametro id passato altrimenti restiruisce un valore nullo;
 	 * @throws Exception lancia un eccezione 
 	 */
@@ -58,8 +56,6 @@ public class UserDAO {
 	 * Metodo getter che restituisce un utente presente nel database:
 	 * 
 	 * @param username valore Stringa, rappresenta il nome dell'utente
-	 * @pre username è una String valida e non NULL
-	 * @post se la query trova corrispondenze l'User non è vuoto 
 	 * @return Il sistema restituisce l'utente associato al parametro username passato altrimenti restituisce un valore nullo;
 	 * @throws Exception lancia un eccezione 
 	 */
@@ -93,8 +89,6 @@ public class UserDAO {
 	 * @param Username valore Stringa, rappresenta il nome dell'utente
 	 * @param Password valore Stringa, rappresenta la password dell'utente
 	 * @param EMail valore Stringa, rappresenta l'e-mail dell'utente
-	 * @pre   Username, Password ed Email sono String valide e non NULL
-	 * @post  dati resi persistenti nel database
 	 * @return Il sistema restituisce vero se la creazione dell'utente è avvenuta con successo altrimenti restituisce un valore falso;
 	 * @throws Exception lancia un eccezione e la stampa
 	 */
@@ -124,8 +118,6 @@ public class UserDAO {
 	/**
 	 * Metodo che permette ad un utente presente nel database di diventare un utente sviluppatore:
 	 * @param user oggetto della classe User, rappresenta l'utente
-	 * @pre user è un User valido e non NULL
-	 * @post dati resi persistenti nel database
 	 * @return Il sistema restituisce vero se l'upgrade a utente sviluppatore è avvenuto con successo altrimenti restituisce un valore falso;
 	 * @throws Exception lancia un eccezione e la stampa
 	 */
@@ -153,8 +145,6 @@ public class UserDAO {
 	/**
 	 * Metodo setter per la modifica del nome e del cognome relativo ad un utente presente nel database:
 	 * @param user oggetto della classe User, rappresenta l'utente
-	 * @pre user è un oggetto User valido non NULL
-	 * @post dati resi persistenti nel database
 	 * @return Il sistema restituisce vero se la modifica dei campi nome e cognome è avvenuta correttamente altrimenti restituisce un valore falso;
 	 * @throws Exception lancia un eccezione e la stampa
 	 */
@@ -214,8 +204,6 @@ public class UserDAO {
 	 * Metodo che permette la verifica del login da parte di utente presente nel database:
 	 * @param Username valore Stringa, rappresenta l'username dell'utente
 	 * @param Password valore Stringa, rappresenta la password dell'utente
-	 * @pre   Username e Password sono String valide e non NULL
-	 * @post  se la query trova delle corrispondenze l'interno non è vuoto
 	 * @return Il sistema restituisce un valore intero associato all'identificativo dell'utente in caso di successo altrimenti restituisce un valore non intero;
 	 * @throws Exception lancia un eccezione e la stampa
 	 */
