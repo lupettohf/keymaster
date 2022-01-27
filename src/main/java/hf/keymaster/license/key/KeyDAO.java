@@ -7,8 +7,10 @@ import java.util.List;
 
 import hf.keymaster.database.ConnectionManager;
 import hf.keymaster.license.License;
+import hf.keymaster.utils.Generated;
 import hf.keymaster.utils.Utils;
 
+@Generated
 public class KeyDAO {
 
 	/**

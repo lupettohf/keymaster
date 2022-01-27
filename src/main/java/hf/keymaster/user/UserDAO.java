@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import hf.keymaster.database.ConnectionManager;
+import hf.keymaster.utils.Generated;
 
+@Generated
 public class UserDAO {
 
 	/**

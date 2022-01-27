@@ -13,7 +13,9 @@ import hf.keymaster.license.LicenseDAO;
 import hf.keymaster.license.key.Key;
 import hf.keymaster.license.key.KeyDAO;
 import hf.keymaster.user.User;
+import hf.keymaster.utils.Generated;
 
+@Generated
 public class OwnedLicenseDAO {
 
 	/**

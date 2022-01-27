@@ -1,5 +1,7 @@
 package hf.keymaster.utils;
 
+import org.apache.commons.validator.UrlValidator;
+
 /**
  * 
  * Classe pubblica dell'oggetto Validators
@@ -44,6 +46,11 @@ public class Validators {
 	}
 
 	public static boolean ValidateURL(String URL) {
-		return URL.matches("((http|https)://)(www.)?[a-zA-Z0-9@:%._\\\\+~#?&//=]{2,256}\\\\.[a-z]{2,6}\\\\b([-a-zA-Z0-9@:%._\\\\+~#?&//=]*)");
+		String[] schemes = {"http","https"}; 
+		UrlValidator urlValidator = new UrlValidator(schemes);
+		if (urlValidator.isValid(URL)) {
+		   return true;
+		} 
+		return true;
 	}
 }

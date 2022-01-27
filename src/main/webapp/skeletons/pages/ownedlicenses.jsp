@@ -28,15 +28,15 @@
 							<td>${owned.getLicense().getName()}</td>
 							<td>${owned.getLicense().getDescription()}</td>
 							<c:if test="${owned.getRemaningDays() == 0}">
-							<td>
-								<button id="remove" name="remove" value="${owned.getLicense().getID()}"
-									class="btn btn-danger">Remove</button>
-								<button id="renew" name="renew" value="${owned.getLicense().getID()}"
-									class="btn btn-success">Renew</button>
-							</td>
+								<td>
+									<button id="remove" name="remove"
+										value="${owned.getLicense().getID()}" class="btn btn-danger">Remove</button>
+									<button id="renew" name="renew"
+										value="${owned.getLicense().getID()}" class="btn btn-success">Renew</button>
+								</td>
 							</c:if>
 							<c:if test="${owned.getRemaningDays() > 0}">
-							<td>${owned.getRemaningDays()}</td>
+								<td>${owned.getRemaningDays()}</td>
 							</c:if>
 						</tr>
 					</c:forEach>
@@ -44,5 +44,6 @@
 			</table>
 		</fieldset>
 	</form>
-</main>A
+</main>
+A
 <jsp:include page="../footer.jsp" />
