@@ -20,7 +20,6 @@ public class LicenseDAO {
 	 * @param Duration rappresenta la durata della licenza
 	 * @param Type rappresenta il tipo di licenza
 	 * @return Il sistema ritorna vero se la licenza è stata creata correttamente altrimenti restituisce un valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean createLicense(Application app, String Name, String Description, int Duration, int Type) {
@@ -54,7 +53,6 @@ public class LicenseDAO {
 	 * Metodo getter di una licenza, presente all'interno del database:
 	 * @param id rappresenta l'identificativo della licenza
 	 * @return Il sistema ritorna la licenza associata al parametro id passato altrimenti restituisce un valore nullo;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static License getLicense(int id) {
@@ -85,7 +83,6 @@ public class LicenseDAO {
 	 * Metodo getter di una lista di licenze, presenti all'interno del database:
 	 * @param app oggetto della classe Application, rappresenta l'applicativo;
 	 * @return Il sistema ritorna una lista di licenze associate all'applicativo passato come parametro altrimenti restituisce un valore nullo
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static List<License> getLicenses(Application app) {
@@ -123,7 +120,6 @@ public class LicenseDAO {
 	 * @param Old oggetto della classe License, rappresenta la licenza da modificare
 	 * @param New oggetto della classe License, rappresenta la licenza modificata
 	 * @return Il sistema ritorna vero se la modifica della licenza è avvenuta con successo altrimenti restituisce un valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean updateLicense(License Old, License New) {

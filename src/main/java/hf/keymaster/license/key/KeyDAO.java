@@ -17,7 +17,6 @@ public class KeyDAO {
 	 * Metodo per la creazione di un chiave, nel database:
 	 * @param license oggetto della classe License, rappresenta la licenza 
 	 * @return Il sistema restituisce vero se la creazione della chiave è avvenuta con successo altrimenti restituisce un valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean createKey(License license) {
@@ -47,7 +46,6 @@ public class KeyDAO {
 	 * Metodo getter di una chiave, presente nel database:
 	 * @param id rappresenta l'identificativo in formato int
 	 * @return Il sistema ritorna una chiave associata al parametro id passato altrimenti restituisce un valore nullo;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static Key getKey(int id) {
@@ -78,7 +76,6 @@ public class KeyDAO {
 	 * Metodo getter di una chiave,presente nel database:
 	 * @param key rapprenta il valore della chiave in formato Stringa
 	 * @return Il sistema ritorna la chiave associata al parametro key passato altrimenti restituisce un valore nullo;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static Key getKey(String key) {
@@ -109,7 +106,6 @@ public class KeyDAO {
 	 * Metodo che restituisce il numero di chiavi associate ad una licenza, presente all'interno del database:
 	 * @param license oggetto della classe License, rappresenta la licenza
 	 * @return Il sistema restituisce un valore intero se vi sono occorrenze di chiavi della licenza passata come parametro altrimenti restituisce un valore non intero;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static int countKeys(License license) {
@@ -139,7 +135,6 @@ public class KeyDAO {
 	 * Metodo che restituisce il numero di chiavi revocate associate ad una licenza, presente all'interno del database:
 	 * @param license oggetto della classe License, rappresenta la licenza
 	 * @return Il sistema ritorna un valore intero se vi sono occorrenze di chiavi revocarte della licenza passata come parametro altrimenti restituisce un valore non intero;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static int countRedemedKeys(License license) {
@@ -170,7 +165,6 @@ public class KeyDAO {
 	 * @param license oggetto della classe License, rappresenta la licenza
 	 * @param OnlyNonRedeemed valore booleano, rappresenta lo stato di una licenza (0)
 	 * @return Il sistema restituisce una lista di chiavi non revocate associate alla licenza passata come parametro altrimenti restituisce un valore nullo;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static List<Key> getKeys(License license, boolean OnlyNonRedeemed) {
@@ -207,7 +201,6 @@ public class KeyDAO {
 	 * @param OnlyNonRedeemed valore booleano, rappresenta lo stato di revoca di una licenza (0)
 	 * @param offset rappresenta il range di chiavi 
 	 * @return Il sistema ritorna una lista di chiavi non revocate associate alla licenza passato come parametro nell'offset definito; altrimenti lancia un eccezione e restituisce un valore nullo;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static List<Key> getKeys(License license, boolean OnlyNonRedeemed, int offset) {
@@ -244,7 +237,6 @@ public class KeyDAO {
 	 *
 	 * @param id rappresenta l'identificativo in valore int
 	 * @return Il sistema restituisce il valore vero se la chiave relativa all'id passato è stata attivata con successo; altrimenti lancia un eccezione e restituisce un valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean activateKey(int id) {

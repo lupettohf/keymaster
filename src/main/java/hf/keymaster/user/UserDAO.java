@@ -25,7 +25,6 @@ public class UserDAO {
 	 * Metodo getter che restituisce un utente presente presente nel database:
 	 * @param ID valore intero, rappresenta l'identificativo 
 	 * @return Il sistema restituisce l'utente associato al parametro id passato altrimenti restiruisce un valore nullo;
-	 * @throws Exception lancia un eccezione 
 	 */
 	
 	public static User getUser(int ID) {
@@ -57,7 +56,6 @@ public class UserDAO {
 	 * 
 	 * @param username valore Stringa, rappresenta il nome dell'utente
 	 * @return Il sistema restituisce l'utente associato al parametro username passato altrimenti restituisce un valore nullo;
-	 * @throws Exception lancia un eccezione 
 	 */
 	
 	public static User getUserByName(String username) {
@@ -90,7 +88,6 @@ public class UserDAO {
 	 * @param Password valore Stringa, rappresenta la password dell'utente
 	 * @param EMail valore Stringa, rappresenta l'e-mail dell'utente
 	 * @return Il sistema restituisce vero se la creazione dell'utente è avvenuta con successo altrimenti restituisce un valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean registerUser(String Username, String Password, String EMail) {
@@ -119,7 +116,6 @@ public class UserDAO {
 	 * Metodo che permette ad un utente presente nel database di diventare un utente sviluppatore:
 	 * @param user oggetto della classe User, rappresenta l'utente
 	 * @return Il sistema restituisce vero se l'upgrade a utente sviluppatore è avvenuto con successo altrimenti restituisce un valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean UpgradeUser(User user)
@@ -146,7 +142,6 @@ public class UserDAO {
 	 * Metodo setter per la modifica del nome e del cognome relativo ad un utente presente nel database:
 	 * @param user oggetto della classe User, rappresenta l'utente
 	 * @return Il sistema restituisce vero se la modifica dei campi nome e cognome è avvenuta correttamente altrimenti restituisce un valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean SetFirstLastName(User user) {
@@ -175,7 +170,6 @@ public class UserDAO {
 	 * Metodo che permette la modifica della password di un utente presente nel database:
 	 * @param user oggetto della classe User, rappresenta l'utente
 	 * @return Il sistema restituisce vero se la modifica del campo password è avvenuta con successo altrimenti restituisce un valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean UpdatePassword(User user) {
@@ -205,7 +199,6 @@ public class UserDAO {
 	 * @param Username valore Stringa, rappresenta l'username dell'utente
 	 * @param Password valore Stringa, rappresenta la password dell'utente
 	 * @return Il sistema restituisce un valore intero associato all'identificativo dell'utente in caso di successo altrimenti restituisce un valore non intero;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static int loginUser(String Username, String Password) {
