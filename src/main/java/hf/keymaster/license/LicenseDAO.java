@@ -7,7 +7,9 @@ import java.util.List;
 
 import hf.keymaster.application.Application;
 import hf.keymaster.database.ConnectionManager;
+import hf.keymaster.utils.Generated;
 
+@Generated
 public class LicenseDAO {
 
 	/**

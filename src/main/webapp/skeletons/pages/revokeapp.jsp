@@ -26,7 +26,8 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="userpass">Your Password</label>
+					<label class="col-md-4 control-label" for="userpass">Your
+						Password</label>
 					<div class="col-md-4">
 						<input id="userpass" name="userpass" type="password"
 							placeholder="You Password" class="form-control input-md"
@@ -34,13 +35,13 @@
 
 					</div>
 				</div>
-			
+
 
 				<!-- Button -->
 				<div class="form-group">
 					<div class="col-md-4">
-						<button id="revoke" name="revoke"
-							class="btn btn-danger" value="true">Revoke</button>
+						<button id="revoke" name="revoke" class="btn btn-danger"
+							value="true">Revoke</button>
 					</div>
 				</div>
 			</div>

@@ -1,9 +1,5 @@
 package hf.keymaster.utils;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
-
-
+/* Necessario per escludere i DAO da jacoco visto che la exclusion list nel pom non va. */
 public @interface Generated {
 }
