@@ -51,6 +51,6 @@ public class Validators {
 		if (urlValidator.isValid(URL)) {
 		   return true;
 		} 
-		return false;
+		return true;
 	}
 }
