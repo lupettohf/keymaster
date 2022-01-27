@@ -13,6 +13,7 @@ import  jakarta.servlet.http.HttpSession;
 import hf.keymaster.user.User;
 import hf.keymaster.utils.Alert;
 import hf.keymaster.utils.Utils;
+import hf.keymaster.utils.Validators;
 
 @WebServlet(name = "CreateApplicationServlet", displayName = "CreateApplicationServlet", urlPatterns = { "/app/new" })
 public class CreateApplicationServlet extends HttpServlet {
@@ -48,12 +49,18 @@ public class CreateApplicationServlet extends HttpServlet {
 
 		if (_u != null) {
 			if (_u.isDeveloper()) {
-				if (ApplicationDAO.createApplication(_u, App_Name, App_Description, App_Website)) {
-					Utils.setAlert(new Alert("Application created successfully.", "success"), session);
-					response.sendRedirect("/app/list");
-				} else {
-					Utils.setAlert(new Alert("Cannot create application, please check the fileds.", "danger"), session);
+				System.out.print("porcodio");
+				if(Validators.ValidateURL(App_Website)) {				
+					if (ApplicationDAO.createApplication(_u, App_Name, App_Description, App_Website)) {						
+						Utils.setAlert(new Alert("Application created successfully.", "success"), session);
+						response.sendRedirect("/app/list");
+					} else {
+						Utils.setAlert(new Alert("Cannot create application, please check the fileds.", "danger"), session);
+					}
+				}else {
+					Utils.setAlert(new Alert("Invalid URL scheme.", "danger"), session);
 				}
+				
 			}
 		}
 	}

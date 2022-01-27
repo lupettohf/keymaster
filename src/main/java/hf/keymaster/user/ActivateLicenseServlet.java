@@ -52,7 +52,7 @@ public class ActivateLicenseServlet extends HttpServlet {
 
 			if (_k != null) {
 				if (!_k.isRedeemed()) {
-					License _lic = LicenseDAO.GetLicense(_k.getLicenseID());
+					License _lic = LicenseDAO.getLicense(_k.getLicenseID());
 					if(OwnedID != null)
 					{
 						OwnedLicense _ow = (OwnedLicense) OwnedLicenseDAO.getOwnedLicense(Integer.parseInt(OwnedID));

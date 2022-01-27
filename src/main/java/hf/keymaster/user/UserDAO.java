@@ -87,7 +87,7 @@ public class UserDAO {
 	}
 	
 	/**
-	 * Metodo CRUD per la creazione di un nuovo utente nel database:
+	 * Metodo per la creazione di un nuovo utente nel database:
 	 * @param Username valore Stringa, rappresenta il nome dell'utente
 	 * @param Password valore Stringa, rappresenta la password dell'utente
 	 * @param EMail valore Stringa, rappresenta l'e-mail dell'utente

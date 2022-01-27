@@ -83,12 +83,13 @@ public class ManageApplicationServlet extends HttpServlet {
 				session.setAttribute("licenses", _l);
 				if (RegenerateApikey != null) {
 					ApplicationDAO.regenerateAPIKey(_a);
+					response.sendRedirect("/app/manage");
 				}
 				if(AddUser != null)
 				{
 					try {
 						User _tgtUser = (User) UserDAO.getUserByName(TargetUser);
-						License _License = (License) LicenseDAO.GetLicense(Integer.parseInt(License));
+						License _License = (License) LicenseDAO.getLicense(Integer.parseInt(License));
 						if(_tgtUser != null)
 						{
 							if(OwnedLicenseDAO.activateLicense(_tgtUser, _License, new Key(-1, _License.getID(), "manual_upgrade", true)))

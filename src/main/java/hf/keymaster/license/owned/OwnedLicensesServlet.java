@@ -44,8 +44,8 @@ public class OwnedLicensesServlet extends HttpServlet{
 		if(_ow != null) { 
 			for(OwnedLicense ow : _ow)
 			{
-				System.out.println("ownedlicese");
-				License license = LicenseDAO.GetLicense(ow.getLicenseID());
+				
+				License license = LicenseDAO.getLicense(ow.getLicenseID());
 				Application application = ApplicationDAO.getApplication(license.getAppID());
 				
 				if(license !=null && application != null) {
@@ -76,7 +76,7 @@ public class OwnedLicensesServlet extends HttpServlet{
 			}
 			if(License_Remove !=null)
 			{
-				if(OwnedLicenseDAO.deleteLicense(_u, LicenseDAO.GetLicense(Integer.parseInt(License_Remove))))
+				if(OwnedLicenseDAO.deleteLicense(_u, LicenseDAO.getLicense(Integer.parseInt(License_Remove))))
 				{
 					Utils.setAlert(new Alert("License removed successfully.", "success"), session);
 				} else {

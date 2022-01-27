@@ -51,7 +51,7 @@ public class ManageLicenseServlet extends HttpServlet {
 
 		User _u = (User) session.getAttribute("user");
 		Application _a = (Application) session.getAttribute("app");
-		License _l = LicenseDAO.GetLicense(Integer.parseInt(LicenseID));
+		License _l = LicenseDAO.getLicense(Integer.parseInt(LicenseID));
 		License _nl = null;
 
 		if (_l == null) {

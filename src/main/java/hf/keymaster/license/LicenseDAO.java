@@ -11,7 +11,7 @@ import hf.keymaster.database.ConnectionManager;
 public class LicenseDAO {
 
 	/**
-	 * Metodo CRUD per la creazione di una licenza, all'interno del database:
+	 * Metodo per la creazione di una licenza, all'interno del database:
 	 * @param app oggetto della classe Application, rappresenta l'applicativo
 	 * @param Name rappresenta il nome della licenza
 	 * @param Description rappresenta la descrizione della licenza
@@ -58,7 +58,7 @@ public class LicenseDAO {
 	 * @throws Exception lancia un eccezione
 	 */
 	
-	public static License GetLicense(int id) {
+	public static License getLicense(int id) {
 		String QUERY = "SELECT * FROM licenses WHERE id = ?";
 
 		PreparedStatement preparedStatement;
@@ -120,7 +120,7 @@ public class LicenseDAO {
 	}
 
 	/**
-	 * Metodo CRUD per la modifica di una licenza, all'interno del database:
+	 * Metodo per la modifica di una licenza, all'interno del database:
 	 *
 	 * @param Old oggetto della classe License, rappresenta la licenza da modificare
 	 * @param New oggetto della classe License, rappresenta la licenza modificata

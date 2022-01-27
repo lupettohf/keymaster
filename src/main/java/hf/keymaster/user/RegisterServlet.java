@@ -44,11 +44,11 @@ public class RegisterServlet extends HttpServlet {
 			if (UserDAO.registerUser(Username, Password, EMail)) {
 				Utils.setAlert(new Alert("Registred successfully, please login.", "success"), session);
 				response.sendRedirect("/login");				
-				// TODO Aggiungere messaggio di successo
+				
 			} else {
 				Utils.setAlert(new Alert("Username or email already registred.", "danger"), session);
 				response.sendRedirect("/register");
-				// TODO Aggiungere messaggio di errore
+		
 			}
 		}
 	}

@@ -2,13 +2,18 @@ package hf.keymaster.user;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+import org.junit.After;
+
 import  jakarta.servlet.FilterChain;
+import jakarta.servlet.RequestDispatcher;
 import  jakarta.servlet.http.HttpServletRequest;
 import  jakarta.servlet.http.HttpServletResponse;
 import  jakarta.servlet.http.HttpSession;
 
 import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 public class LoginServleTest {
@@ -16,16 +21,15 @@ public class LoginServleTest {
 	  private static final HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
 	  private static final HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
 	  private static final HttpSession session = Mockito.mock(HttpSession.class);
+	  private static final RequestDispatcher req = Mockito.mock(RequestDispatcher.class);
 	  private static final LoginServlet servlet = new LoginServlet();
-
-	  @BeforeAll
-	  public static void beforeAll() {
-	    Mockito.doReturn(session).when(request).getSession();
-	  }
+	  private static final MockedStatic<UserDAO> mockUserDAO = Mockito.mockStatic(UserDAO.class);
 	  
 	  @Test
-	  public void testLogin()
+	  public void LoginServleTest()
 	  {
+		  Mockito.doReturn(session).when(request).getSession();
+		  Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString());  
 		  Mockito.when(request.getParameter("username")).thenReturn("testuser02");
 		  Mockito.when(request.getParameter("password")).thenReturn("testuser00");
 		  
@@ -36,11 +40,15 @@ public class LoginServleTest {
 				  "Name",
 				   false);
 		  Mockito.when(request.getSession()).thenReturn(session);
-		  Mockito.when(request.getSession().getAttribute("user")).thenReturn(u);
-
-
-		  Mockito.doReturn(u).when(session).getAttribute("user");
+		 
+		  
+		  mockUserDAO.when(() -> UserDAO.loginUser(Mockito.anyString(), Mockito.anyString())).thenReturn(1);
+	      mockUserDAO.when(() -> UserDAO.getUser(1)).thenReturn(u);
+		  
+		  
+		  assertDoesNotThrow(() -> servlet.doGet(request, response));
 		  assertDoesNotThrow(() -> servlet.doPost(request, response));
+		  mockUserDAO.close();
 	  }
-	  
+
 }

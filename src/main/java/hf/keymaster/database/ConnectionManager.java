@@ -23,17 +23,20 @@ public class ConnectionManager {
 	            cpds.setJdbcUrl("jdbc:mysql://192.168.1.200:3306/keymaster?useSSL=false");
 	            cpds.setUser("external");
 	            cpds.setPassword("external271166");
+	            cpds.setMinPoolSize(5);
+	            cpds.setMaxPoolSize(10);
+	            cpds.setMaxStatements(100);
 	        } catch (PropertyVetoException e) {
 	            // handle the exception
 	        }
 	    }
 	    
-	    public static Connection getDBConnection() throws SQLException {
+	    public static Connection xgetDBConnection() throws SQLException {
 	        return cpds.getConnection();
 	    }
 	    
 	
-	public static Connection xgetDBConnection() {
+	public static Connection getDBConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			if (databaseConnection == null) {
