@@ -29,7 +29,7 @@ public class ListApplicationServletTest {
 	public void ListApplicationServletTest()
 	{
 		Mockito.doReturn(session).when(request).getSession(); 
-		 Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString());   
+		Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString());   
 		User u = new User(1, "testuser02", 
 				  "b674f5285a0587792b1f887e727a29b1808ef510070a37408b3c88e1be4ca71e",
 				  "testuser00@gmail.com",

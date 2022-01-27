@@ -31,12 +31,12 @@ public class ConnectionManager {
 	        }
 	    }
 	    
-	    public static Connection getDBConnection() throws SQLException {
+	    public static Connection xgetDBConnection() throws SQLException {
 	        return cpds.getConnection();
 	    }
 	    
 	
-	public static Connection xgetDBConnection() {
+	public static Connection getDBConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			if (databaseConnection == null) {

@@ -49,8 +49,9 @@ public class CreateApplicationServlet extends HttpServlet {
 
 		if (_u != null) {
 			if (_u.isDeveloper()) {
-				if(Validators.ValidateURL(App_Website)) {
-					if (ApplicationDAO.createApplication(_u, App_Name, App_Description, App_Website)) {
+				System.out.print("porcodio");
+				if(Validators.ValidateURL(App_Website)) {				
+					if (ApplicationDAO.createApplication(_u, App_Name, App_Description, App_Website)) {						
 						Utils.setAlert(new Alert("Application created successfully.", "success"), session);
 						response.sendRedirect("/app/list");
 					} else {

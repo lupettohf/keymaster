@@ -36,9 +36,16 @@ public class CreateApplicationServletTest {
 				   true);
 		 
 		 mockApplicationDAO.when(() -> ApplicationDAO.createApplication(u, "Test Application", "Test Description", "https://example.com/product")).thenReturn(true);
+
 		 Mockito.doReturn(u).when(session).getAttribute("user");
 		 assertDoesNotThrow(() -> servlet.doPost(request, response));
 		 assertDoesNotThrow(() -> servlet.doGet(request, response));
+		/*
+		 mockApplicationDAO.verify(
+				    () -> ApplicationDAO.createApplication(u, "Test Application", "Test Description", "https://example.com/product"),
+				    Mockito.atLeastOnce()
+		 );
+		 */
 		 mockApplicationDAO.close();
 	}
 }

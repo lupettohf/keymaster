@@ -54,6 +54,7 @@ public class OwnedLicensesServletTest {
 		 mockApplicationDAO.when(() -> ApplicationDAO.getApplication(1)).thenReturn(a);
 		 mockOwnedLicenseDAO.when(() -> OwnedLicenseDAO.deleteLicense(u, l)).thenReturn(true);
 		 Mockito.doReturn(u).when(session).getAttribute("user");
+		 
 		 assertDoesNotThrow(() -> servlet.doPost(request, response));
 		 assertDoesNotThrow(() -> servlet.doGet(request, response));
 		 mockOwnedLicenseDAO.close();
