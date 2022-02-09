@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"hf.keymaster.user"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"hf.keymaster.api"},{"l":"hf.keymaster.application"},{"l":"hf.keymaster.database"},{"l":"hf.keymaster.license"},{"l":"hf.keymaster.license.key"},{"l":"hf.keymaster.license.owned"},{"l":"hf.keymaster.user"},{"l":"hf.keymaster.utils"}];updateSearchResults();

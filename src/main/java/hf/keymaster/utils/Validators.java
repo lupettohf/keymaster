@@ -42,6 +42,8 @@ public class Validators {
 	}
 
 	public static boolean ValidateEmail(String Email) {
+		if(Email.length() < 6) { return false; } 
+		
 		return Email.matches("[\\w-]+@([\\w-]+\\.)+[\\w-]+");
 	}
 

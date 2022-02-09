@@ -1,1 +1,8 @@
+hf.keymaster.api
+hf.keymaster.application
+hf.keymaster.database
+hf.keymaster.license
+hf.keymaster.license.key
+hf.keymaster.license.owned
 hf.keymaster.user
+hf.keymaster.utils

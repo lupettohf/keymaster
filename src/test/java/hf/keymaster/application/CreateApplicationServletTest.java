@@ -2,6 +2,8 @@ package hf.keymaster.application;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+import java.io.IOException;
+
 import org.junit.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
@@ -20,8 +22,9 @@ public class CreateApplicationServletTest {
 	private static final MockedStatic<ApplicationDAO> mockApplicationDAO = Mockito.mockStatic(ApplicationDAO.class);
 	private static final CreateApplicationServlet servlet = new CreateApplicationServlet();
 	
+	//Correct
 	@Test
-	public void CreateApplicationServletTest()
+	public void TCGLS34_CreateApplicationServletTest() throws IOException
 	{
 		 Mockito.doReturn(session).when(request).getSession(); 
 		 Mockito.doReturn(req).when(request).getRequestDispatcher(Mockito.anyString()); 
@@ -40,12 +43,8 @@ public class CreateApplicationServletTest {
 		 Mockito.doReturn(u).when(session).getAttribute("user");
 		 assertDoesNotThrow(() -> servlet.doPost(request, response));
 		 assertDoesNotThrow(() -> servlet.doGet(request, response));
-		/*
-		 mockApplicationDAO.verify(
-				    () -> ApplicationDAO.createApplication(u, "Test Application", "Test Description", "https://example.com/product"),
-				    Mockito.atLeastOnce()
-		 );
-		 */
+		 Mockito.verify(response, Mockito.atLeastOnce()).sendRedirect("/app/new");
+		 
 		 mockApplicationDAO.close();
 	}
 }

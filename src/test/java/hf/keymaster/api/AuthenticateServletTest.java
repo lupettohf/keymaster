@@ -41,7 +41,185 @@ public class AuthenticateServletTest {
 	private AuthenticateServelt servlet = new AuthenticateServelt();
 	
 	@Test
-	public void HWID_AuthenticateSevletTest() throws IOException
+	public void TCGU31_AuthenticateSevletTest() throws IOException
+	{
+		  Mockito.when(request.getParameter("username")).thenReturn("testuser02");
+		  Mockito.when(request.getParameter("password")).thenReturn("testuser00");
+		  Mockito.when(request.getParameter("hwid")).thenReturn("123-123-123");
+		  Mockito.when(request.getParameter("apikey")).thenReturn("AAAAA");
+		  Mockito.when(request.getPathInfo()).thenReturn("/AAAAA\n"
+					+ "/AAAAA\n"
+					+ "/AAAAA\n");
+		  Mockito.when(response.getWriter()).thenReturn(out); 
+		  
+		  User u = new User(1, "testuser02", 
+				  "b674f5285a0587792b1f887e727a29b1808ef510070a37408b3c88e1be4ca71e",
+				  "testuser02@gmail.com",
+				  "Nick",
+				  "Name",
+				   false);
+		  
+		  Mockito.when(request.getSession()).thenReturn(session);
+		  Mockito.when(request.getSession().getAttribute("user")).thenReturn(u);
+		  
+			  
+		  Application a = new Application(1,1,"Test Application", "Test Description", "https://example.com", 0, "test-api");
+		  License l = new License(1, 1, "Test License", "Test Description", 1, 30);
+	      List<License> _l = new ArrayList<License>(); _l.add(l);
+		  OwnedLicense ow = new OwnedLicense(1, 1, 1, 142342231, 1, "123-123-123");
+		  List<OwnedLicense> _ow = new ArrayList<OwnedLicense>(); _ow.add(ow);
+		  
+		  mockUserDAO.when(() -> UserDAO.loginUser(Mockito.anyString(), Mockito.anyString())).thenReturn(1);
+		  mockUserDAO.when(() -> UserDAO.getUser(1)).thenReturn(u);
+		  mockOwnedLicenseDAO.when(() -> OwnedLicenseDAO.getOwnedLicenses(u)).thenReturn(_ow);
+		  mockOwnedLicenseDAO.when(() -> OwnedLicenseDAO.isActive(ow)).thenReturn(true);
+		  mockApplicationDAO.when(() -> ApplicationDAO.getApplication(Mockito.anyString())).thenReturn(a);
+		  
+
+			  
+		  mockLicenseDAO.when(() -> LicenseDAO.getLicenses(a)).thenReturn(_l);
+		  
+		  assertDoesNotThrow(() -> servlet.doPost(request, response));
+		  Mockito.verify(response, Mockito.atLeastOnce()).setStatus(503);
+
+	} 
+	
+	@Test
+	public void TCGU32_AuthenticateSevletTest() throws IOException
+	{
+		  Mockito.when(request.getParameter("username")).thenReturn("testuser02");
+		  Mockito.when(request.getParameter("password")).thenReturn("testuser00");
+		  Mockito.when(request.getParameter("hwid")).thenReturn("123-123-123");
+		  Mockito.when(request.getParameter("apikey")).thenReturn("T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo");
+		  Mockito.when(request.getPathInfo()).thenReturn("/T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo\n"
+					+ "/T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo\n"
+					+ "/T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo\n");
+		  Mockito.when(response.getWriter()).thenReturn(out); 
+		  
+		  User u = new User(1, "testuser02", 
+				  "b674f5285a0587792b1f887e727a29b1808ef510070a37408b3c88e1be4ca71e",
+				  "testuser02@gmail.com",
+				  "Nick",
+				  "Name",
+				   false);
+		  
+		  Mockito.when(request.getSession()).thenReturn(session);
+		  Mockito.when(request.getSession().getAttribute("user")).thenReturn(u);
+		  
+			  
+		  Application a = new Application(1,1,"Test Application", "Test Description", "https://example.com", 0, "test-api");
+		  License l = new License(1, 1, "Test License", "Test Description", 1, 30);
+	      List<License> _l = new ArrayList<License>(); _l.add(l);
+		  OwnedLicense ow = new OwnedLicense(1, 1, 1, 142342231, 1, "123-123-123");
+		  List<OwnedLicense> _ow = new ArrayList<OwnedLicense>(); _ow.add(ow);
+		  
+		  mockUserDAO.when(() -> UserDAO.loginUser(Mockito.anyString(), Mockito.anyString())).thenReturn(-1); // <--- Wrong user
+		  mockUserDAO.when(() -> UserDAO.getUser(1)).thenReturn(u);
+		  mockOwnedLicenseDAO.when(() -> OwnedLicenseDAO.getOwnedLicenses(u)).thenReturn(_ow);
+		  mockOwnedLicenseDAO.when(() -> OwnedLicenseDAO.isActive(ow)).thenReturn(true);
+		  mockApplicationDAO.when(() -> ApplicationDAO.getApplication(Mockito.anyString())).thenReturn(a);
+		  
+
+			  
+		  mockLicenseDAO.when(() -> LicenseDAO.getLicenses(a)).thenReturn(_l);
+		  
+		  assertDoesNotThrow(() -> servlet.doPost(request, response));
+		  Mockito.verify(response, Mockito.atLeastOnce()).setStatus(401);
+
+	} 
+	
+	//Wrong username password
+	@Test
+	public void TCGU33_AuthenticateSevletTest() throws IOException
+	{
+		  Mockito.when(request.getParameter("username")).thenReturn("testuser02");
+		  Mockito.when(request.getParameter("password")).thenReturn("testuser02");
+		  Mockito.when(request.getParameter("hwid")).thenReturn("123-123-123");
+		  Mockito.when(request.getParameter("apikey")).thenReturn("T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo");
+		  Mockito.when(request.getPathInfo()).thenReturn("/T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo\n"
+					+ "/T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo\n"
+					+ "/T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo\n");
+		  Mockito.when(response.getWriter()).thenReturn(out); 
+		  
+		  User u = new User(1, "testuser02", 
+				  "b674f5285a0587792b1f887e727a29b1808ef510070a37408b3c88e1be4ca71e",
+				  "testuser02@gmail.com",
+				  "Nick",
+				  "Name",
+				   false);
+		  
+		  Mockito.when(request.getSession()).thenReturn(session);
+		  Mockito.when(request.getSession().getAttribute("user")).thenReturn(u);
+		  
+			  
+		  Application a = new Application(1,1,"Test Application", "Test Description", "https://example.com", 0, "test-api");
+		  License l = new License(1, 1, "Test License", "Test Description", 1, 30);
+	      List<License> _l = new ArrayList<License>(); _l.add(l);
+		  OwnedLicense ow = new OwnedLicense(1, 1, 1, 142342231, 1, "123-123-123");
+		  List<OwnedLicense> _ow = new ArrayList<OwnedLicense>(); _ow.add(ow);
+		  
+		  mockUserDAO.when(() -> UserDAO.loginUser(Mockito.anyString(), Mockito.anyString())).thenReturn(-1); // <--- Wrong user
+		  mockUserDAO.when(() -> UserDAO.getUser(1)).thenReturn(u);
+		  mockOwnedLicenseDAO.when(() -> OwnedLicenseDAO.getOwnedLicenses(u)).thenReturn(_ow);
+		  mockOwnedLicenseDAO.when(() -> OwnedLicenseDAO.isActive(ow)).thenReturn(true);
+		  mockApplicationDAO.when(() -> ApplicationDAO.getApplication(Mockito.anyString())).thenReturn(a);
+		  
+
+			  
+		  mockLicenseDAO.when(() -> LicenseDAO.getLicenses(a)).thenReturn(_l);
+		  
+		  assertDoesNotThrow(() -> servlet.doPost(request, response));
+		  Mockito.verify(response, Mockito.atLeastOnce()).setStatus(401);
+
+	} 
+	
+	//Missing License
+	@Test
+	public void TCGU34_AuthenticateSevletTest() throws IOException
+	{
+		  Mockito.when(request.getParameter("username")).thenReturn("testuser02");
+		  Mockito.when(request.getParameter("password")).thenReturn("testuser00");
+		  Mockito.when(request.getParameter("hwid")).thenReturn("123-123-123");
+		  Mockito.when(request.getParameter("apikey")).thenReturn("T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo");
+		  Mockito.when(request.getPathInfo()).thenReturn("/T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo\n"
+					+ "/T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo\n"
+					+ "/T9zQmWOOb4Gw7bJC3A0lt7kw58iqsUoo\n");
+		  Mockito.when(response.getWriter()).thenReturn(out); 
+		  
+		  User u = new User(1, "testuser02", 
+				  "b674f5285a0587792b1f887e727a29b1808ef510070a37408b3c88e1be4ca71e",
+				  "testuser02@gmail.com",
+				  "Nick",
+				  "Name",
+				   false);
+		  
+		  Mockito.when(request.getSession()).thenReturn(session);
+		  Mockito.when(request.getSession().getAttribute("user")).thenReturn(u);
+		  
+			  
+		  Application a = new Application(1,1,"Test Application", "Test Description", "https://example.com", 0, "test-api");
+		  License l = new License(1, 1, "Test License", "Test Description", 1, 30);
+	      List<License> _l = new ArrayList<License>(); _l.add(l);
+		  OwnedLicense ow = new OwnedLicense(2, 2, 2, 142342231, 1, "123-123-123");
+		  List<OwnedLicense> _ow = new ArrayList<OwnedLicense>(); _ow.add(ow);
+		  
+		  mockUserDAO.when(() -> UserDAO.loginUser(Mockito.anyString(), Mockito.anyString())).thenReturn(1); 
+		  mockUserDAO.when(() -> UserDAO.getUser(1)).thenReturn(u);
+		  mockOwnedLicenseDAO.when(() -> OwnedLicenseDAO.getOwnedLicenses(u)).thenReturn(null); // No license
+		  mockOwnedLicenseDAO.when(() -> OwnedLicenseDAO.isActive(ow)).thenReturn(false);
+		  mockApplicationDAO.when(() -> ApplicationDAO.getApplication(Mockito.anyString())).thenReturn(a);
+		  
+
+			  
+		  //mockLicenseDAO.when(() -> LicenseDAO.getLicenses(a)).thenReturn(_l);
+		  
+		  assertDoesNotThrow(() -> servlet.doPost(request, response));
+		  Mockito.verify(response, Mockito.atLeastOnce()).setStatus(204);
+
+	} 
+	
+	@Test
+	public void TCGU35_AuthenticateSevletTest() throws IOException
 	{
 		  Mockito.when(request.getParameter("username")).thenReturn("testuser02");
 		  Mockito.when(request.getParameter("password")).thenReturn("testuser00");
@@ -66,13 +244,13 @@ public class AuthenticateServletTest {
 		  Application a = new Application(1,1,"Test Application", "Test Desctription", "https://example.com", 0, "test-api");
 		  License l = new License(1, 1, "Test License", "Test Description", 1, 30);
 	      List<License> _l = new ArrayList<License>(); _l.add(l);
-		  OwnedLicense ow = new OwnedLicense(1, 1, 1, 142342231, 1, "123-123-123");
+		  OwnedLicense ow = new OwnedLicense(1, 1, 1, 142342231, 1, null);
 		  List<OwnedLicense> _ow = new ArrayList<OwnedLicense>(); _ow.add(ow);
 		  
 		  mockUserDAO.when(() -> UserDAO.loginUser(Mockito.anyString(), Mockito.anyString())).thenReturn(1);
 		  mockUserDAO.when(() -> UserDAO.getUser(1)).thenReturn(u);
 		  mockOwnedLicenseDAO.when(() -> OwnedLicenseDAO.getOwnedLicenses(u)).thenReturn(_ow);
-		  mockOwnedLicenseDAO.when(() -> OwnedLicenseDAO.isActive(ow)).thenReturn(true);
+		  mockOwnedLicenseDAO.when(() -> OwnedLicenseDAO.isActive(ow)).thenReturn(false); // License Expired
 		  mockApplicationDAO.when(() -> ApplicationDAO.getApplication(Mockito.anyString())).thenReturn(a);
 		  
 
@@ -80,11 +258,11 @@ public class AuthenticateServletTest {
 		  mockLicenseDAO.when(() -> LicenseDAO.getLicenses(a)).thenReturn(_l);
 		  
 		  assertDoesNotThrow(() -> servlet.doPost(request, response));
-
+		  Mockito.verify(response, Mockito.atLeastOnce()).setStatus(423);
 	} 
 	
 	@Test
-	public void noHWID_AuthenticateSevletTest() throws IOException
+	public void TCGU36_AuthenticateSevletTest() throws IOException
 	{
 		  Mockito.when(request.getParameter("username")).thenReturn("testuser02");
 		  Mockito.when(request.getParameter("password")).thenReturn("testuser00");
@@ -123,10 +301,16 @@ public class AuthenticateServletTest {
 		  mockLicenseDAO.when(() -> LicenseDAO.getLicenses(a)).thenReturn(_l);
 		  
 		  assertDoesNotThrow(() -> servlet.doPost(request, response));
+		  Mockito.verify(response, Mockito.atLeastOnce()).setContentType("application/json");
+	} 
+	
+	
+	@AfterAll
+	public static void closeMocks()
+	{
 		  mockOwnedLicenseDAO.close();
 		  mockApplicationDAO.close();
 		  mockLicenseDAO.close(); 
 		  mockUserDAO.close();
-	} 
-	
+	}
 }

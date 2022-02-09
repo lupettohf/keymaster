@@ -50,6 +50,9 @@ public class RegisterServlet extends HttpServlet {
 				response.sendRedirect("/register");
 		
 			}
+		} else {
+			Utils.setAlert(new Alert("Some fileds where populated uncorrectly.", "danger"), session);
+			response.sendRedirect("/register");
 		}
 	}
 

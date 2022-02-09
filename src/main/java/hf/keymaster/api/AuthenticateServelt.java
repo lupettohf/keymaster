@@ -79,7 +79,7 @@ public class AuthenticateServelt extends HttpServlet {
 										out.print("]");
 									} else {
 										response.setStatus(423);
-										/* License exsist but expired */ }
+										/* License exists but expired */ }
 								}
 							
 							}
