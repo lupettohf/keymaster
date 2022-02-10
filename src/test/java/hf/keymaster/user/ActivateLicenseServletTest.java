@@ -12,6 +12,7 @@ import  jakarta.servlet.http.HttpSession;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
@@ -23,6 +24,7 @@ import hf.keymaster.license.key.KeyDAO;
 import hf.keymaster.license.owned.OwnedLicense;
 import hf.keymaster.license.owned.OwnedLicenseDAO;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ActivateLicenseServletTest {
 
 	private static final HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
@@ -62,6 +64,9 @@ public class ActivateLicenseServletTest {
 		  assertDoesNotThrow(() -> servlet.doPost(request, response));
 		  assertDoesNotThrow(() -> servlet.doGet(request, response));
 		  Mockito.verify(response, Mockito.atLeastOnce()).sendRedirect("/user/licenses/activate");
+		  mockKeyDAO.close();
+		  mockOwnedLicenseDAO.close();
+		  mockLicenseDAO.close();
 	}
 	
 	//Key valid but redeemed
@@ -124,6 +129,7 @@ public class ActivateLicenseServletTest {
 		  assertDoesNotThrow(() -> servlet.doPost(request, response));
 		  assertDoesNotThrow(() -> servlet.doGet(request, response));
 		  Mockito.verify(response, Mockito.atLeastOnce()).sendRedirect("/user/licenses");
+		 
 	}
 	
 	@AfterAll

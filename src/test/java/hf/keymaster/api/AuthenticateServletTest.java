@@ -11,6 +11,7 @@ import org.junit.After;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
@@ -28,6 +29,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AuthenticateServletTest {
 
 	private static final HttpServletRequest request = Mockito.mock(HttpServletRequest.class);

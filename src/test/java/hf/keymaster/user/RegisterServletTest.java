@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.io.IOException;
 
-import org.junit.After;
-
 import jakarta.servlet.RequestDispatcher;
 import  jakarta.servlet.http.HttpServletRequest;
 import  jakarta.servlet.http.HttpServletResponse;
@@ -13,13 +11,13 @@ import  jakarta.servlet.http.HttpSession;
 
 import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
-import hf.keymaster.utils.Alert;
 import hf.keymaster.utils.Validators;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RegisterServletTest {
 
 	private static final HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
@@ -117,8 +115,12 @@ public class RegisterServletTest {
 		 
 		 assertDoesNotThrow(() -> servlet.doPost(request, response));
 		 Mockito.verify(response, Mockito.atLeastOnce()).sendRedirect("/login");
+		 
+		 mockUserDAO.close();
+		 mockValidators.close();
 	}
 	
+	//TODO: Per qualche oscuro motivo non lo chiama. 
 	@AfterAll
 	public static void closeMocks()
 	{

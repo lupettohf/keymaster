@@ -63,7 +63,9 @@ public class ManageLicenseServlet extends HttpServlet {
 		if (_a.getOwnerID() == _u.getID() && _l.getAppID() == _a.getID()) {
 			session.removeAttribute("license");
 			session.setAttribute("license", _l);
-			if (LicenseName != null && LicenseDescription != null && LicenseDuration != null && LicenseType != null) {
+			if (LicenseName != null && LicenseDescription != null && LicenseDuration != null && LicenseType != null
+				&& !LicenseName.isBlank() && !LicenseDescription.isBlank() && !LicenseDuration.isBlank() && !LicenseType.isBlank()
+					) {
 				_nl = _l;
 				_nl.setName(LicenseName);
 				_nl.setDescription(LicenseDescription);

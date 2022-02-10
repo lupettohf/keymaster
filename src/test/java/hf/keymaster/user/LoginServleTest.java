@@ -2,6 +2,7 @@ package hf.keymaster.user;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+
 import java.io.IOException;
 
 import org.junit.After;
@@ -15,9 +16,11 @@ import  jakarta.servlet.http.HttpSession;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class LoginServleTest {
 
 	  private static final HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
@@ -77,6 +80,8 @@ public class LoginServleTest {
 		  
 		  assertDoesNotThrow(() -> servlet.doPost(request, response));
 		  Mockito.verify(response, Mockito.atLeastOnce()).sendRedirect("login");
+		  
+		  mockUserDAO.close();
 	  }
 	  
 	  @AfterAll
