@@ -49,15 +49,17 @@ public class CreateApplicationServlet extends HttpServlet {
 
 		if (_u != null) {
 			if (_u.isDeveloper()) {
-				if(Validators.ValidateURL(App_Website)) {				
+				if(Validators.ValidateURL(App_Website) && !App_Name.isBlank() && !App_Description.isBlank()) {				
 					if (ApplicationDAO.createApplication(_u, App_Name, App_Description, App_Website)) {						
 						Utils.setAlert(new Alert("Application created successfully.", "success"), session);
 						response.sendRedirect("/app/list");
 					} else {
 						Utils.setAlert(new Alert("Cannot create application, please check the fileds.", "danger"), session);
+						response.sendRedirect("/app/new");
 					}
 				}else {
-					Utils.setAlert(new Alert("Invalid URL scheme.", "danger"), session);
+					Utils.setAlert(new Alert("Invalid fields.", "danger"), session);
+					response.sendRedirect("/app/new");
 				}
 				
 			}

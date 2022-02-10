@@ -19,10 +19,7 @@ public class ApplicationDAO {
 	 * @param name rappresenta la Stringa contenente il nome dell'applicazione
 	 * @param description rappresenta la Stringa contente la descrizione dell'applicazione
 	 * @param website rappresenta la Stringa contenente l'url del sito web
-	 * @pre user è un oggetto User valido, name description website sono String valide non NULL
-	 * @post viene reso persistente l'applicativo nel database
 	 * @return Il sistema ritorna vero se ha eseguito con successo la creazione dell'applicazione altrimenti ritorna un valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean createApplication(User user, String name, String description, String website) {
@@ -57,10 +54,7 @@ public class ApplicationDAO {
 	/**
 	 * Metodo getter di una lista di applicativi, di un determinato utente fornito come parametro, presente all'interno del database:
 	 * @param user rappresenta l'oggetto della classe User, rappresenta l'utente
-	 * @pre user è un oggetto User valido non NULL
-	 * @post se la query trova corrispondeze ritorna una lista di applicativi non vuota
 	 * @return Il sistema ritorna la lista di Applicazioni associate all'utente passato altrimenti ritorna un valore nullo;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static List<Application> getApplications(User user) {
@@ -97,10 +91,7 @@ public class ApplicationDAO {
 	/**
 	 * Metodo per l'eliminazione di un applicativo, presente all'interno del database:
 	 * @param ToDelete oggetto della classe Application, rappresenta l'applicativo da rimuovere
-	 * @pre ToDelete è un oggetto Application valido non NULL
-	 * @post viene rimosso un oggetto persistente dal database
 	 * @return	Il sistema ritorna vero se l'operazione di eliminazione è avvenuta con successo altrimenti ritorna un valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean deleteApplication(Application ToDelete) {
@@ -126,10 +117,7 @@ public class ApplicationDAO {
 	/**
 	 * Metodo per la revoca del possesso di un applicativo, presente all'interno del database:
 	 * @param App oggetto della classe Application, rappresenta l'applicativo da revocare
-	 * @pre App è un oggetto Application valido non NULL
-	 * @post se la query trova corrispondenza modifica il dato persistente
 	 * @return Il sistema ritorna vero se la revoca dell'applicazione è avvenuta con successo altrimenti ritorna un valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean revokeApplication(Application App)
@@ -157,10 +145,7 @@ public class ApplicationDAO {
 	 * Metodo per la modifica di un applicativo, presente all'interno del database:
 	 * @param Old oggetto della classe Application, rappresenta l'applicativo da modificare
 	 * @param New oggetto della classe Application, rappresenta l'applicativo modificato
-	 * @pre Old e New sono oggetti Application validi non NULL
-	 * @post dati resi persistenti nel database
 	 * @return Il sistema ritorna vero se le modifiche all'applicativo sono state apportate altrimenti ritorna falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean updateApplication(Application Old, Application New) {
@@ -190,10 +175,7 @@ public class ApplicationDAO {
 	/**
 	 * Metodo che permette di generare l' APIKey associata ad un Applicazione, presente all'interno del database:
 	 * @param app oggetto della classe Application, rappresenta l'applicazione per cui generare l'apikey
-	 * @pre app è un oggetto Application valido non NULL
-	 * @post dati resi persistenti nel database
 	 * @return Il sistema ritorna una Stringa contente l'apikey associata all'applicativo altrimenti restituisce un valore nullo;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static String regenerateAPIKey(Application app) {
@@ -220,10 +202,7 @@ public class ApplicationDAO {
 	/**
 	 * Metodo getter di un applicativo, presente all'interno del database:
 	 * @param id rappresenta l'identificativo dell'applicazione da estrarre
-	 * @pre id è un int valido non NULL
-	 * @post se la query trova corrispondenze l'applicativo non è vuoto
 	 * @return Il sistema ritorna l'applicazione associata al parametro id passato altrimenti restituisce un valore nullo;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static Application getApplication(int id) {
@@ -254,10 +233,7 @@ public class ApplicationDAO {
 	/**
 	 * Metodo getter di un applicativo, presente all'interno del database:
 	 * @param apikey rappresenta la Stringa contenente l'apikey associata all'applicativo
-	 * @pre apikey è una String valida non NULL
-	 * @post se la query trova corrispondenze l'applicativo non è vuoto
 	 * @return Il sistema restituisce l'applicazione associata al parametro apikey passato; altrimenti lancia un eccezione e restituisce un valore nullo;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static Application getApplication(String apikey) {

@@ -47,8 +47,8 @@ public class ActivateLicenseServlet extends HttpServlet {
 		String ProductKey = request.getParameter("ProductKey");
 		User user = (User) session.getAttribute("user");
 
-		if (ProductKey != null && user != null) {
-			Key _k = KeyDAO.getKey(ProductKey);
+		if (ProductKey != null && user != null) { 
+			Key _k = KeyDAO.getKey(ProductKey);  
 
 			if (_k != null) {
 				if (!_k.isRedeemed()) {

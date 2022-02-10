@@ -23,10 +23,7 @@ public class OwnedLicenseDAO {
 	 * @param user oggetto della classe User, rappresenta l'utente
 	 * @param license oggetto della classe License, rappresenta la licenza
 	 * @param key oggetto della classe Key, rappresenta la chiave 
-	 * @pre user è un oggeto User valido, key è un oggetto Key valido non NULL
-	 * @post vengono resi persistenti dati nel database
 	 * @return Il sistema restituisce vero se l'attivazione della chiave della chiave relativa alla licenza dell'utente è avvenuta con successo; altrimenti restrituisce un valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean activateLicense(User user, License license, Key key) {		
@@ -78,10 +75,7 @@ public class OwnedLicenseDAO {
 	 * Metodo che rimuove una licenza relativa ad un utente nel database:
 	 * @param user oggetto della classe User, rappresenta l'utente
 	 * @param license oggetto della classe License, rappresenta la licenza
-	 * @pre user è un oggeto User valido, license è un oggetto License valido non NULL
-	 * @post vengono modificati i dati persistenti nel database
 	 * @return Il sistema restituisce vero se la rimozione della licenza relatica all'utente passato da parametro è avvenuta con successo; altrimenti restituisce il valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean deleteLicense(User user, License license) {		
@@ -111,10 +105,7 @@ public class OwnedLicenseDAO {
 	/**
 	 * Metodo getter per le licenze possedute nel database:
 	 * @param id valore intero, rappresenta l'indentificativo di una determinata licenza posseduta
-	 * @pre id è un int valido non NULL
-	 * @post se la query trova corrispondenze, l'oggetto OwnedLicense non è vuoto
 	 * @return Il sistema restituisce la licenza posseduta relativa all'id passato come parametro; altrimenti lancia un eccezione e restituisce un valore nullo;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static OwnedLicense getOwnedLicense(int id) {
@@ -144,10 +135,7 @@ public class OwnedLicenseDAO {
 	/**
 	 * Metodo getter per una lista di licenze posseduta nel database:
 	 * @param user oggetto della classe User, rappresenta l'utente
-	 * @pre user è un oggetto User non NULL
-	 * @post se la query trova corrispondenze, la lista OwnedLicense non è vuota
 	 * @return Il sistema restituisce una lista di licenze possedute relative all'utente passato come parametro altrimenti restituisce un valore nullo;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static List<OwnedLicense> getOwnedLicenses(User user) {
@@ -183,10 +171,7 @@ public class OwnedLicenseDAO {
 	 * Metodo che permette di settare l'identificativo hardware di una licenza posseduta nel database:
 	 * @param owned oggetto della classe OwnedLicense, rappresenta una licenza posseduta
 	 * @param HardwareID valore Stringa, rappresenta l'identificativo hardware della macchine di un utente
-	 * @pre owned è un oggetto OwnedLicense valido, HardwareID è una String valida, non NULL
-	 * @post vengono caricati dati persistenti nel database
 	 * @return Il sistema restituisce vero se l'aggiornamento dell'hardwareID è andato a buon fine altrimenti restituisce un valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean setHardwareID(OwnedLicense owned, String HardwareID)
@@ -214,10 +199,7 @@ public class OwnedLicenseDAO {
 	 * Metodo che attiva una licenza precedentemente scaduta nel database:
 	 * @param owned oggetto della classe OwnedLicense, rappresenta la licenza posseduta
 	 * @param key oggetto della classe Key, rappresenta la nuova chiave
-	 * @pre key è un oggetto valido non NULL, owned è un oggetto valido non NULL
-	 * @post vengono modificati i dati persistenti nel database
 	 * @return Il sistema restituisce vero se la riattivazione è avvenuta con successo, altrimenti restiruisce falso
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean renewLicense(OwnedLicense owned, Key key) {
@@ -256,9 +238,7 @@ public class OwnedLicenseDAO {
 	/**
 	 * Metodo che permette di verificare se una licenza posseduta è attiva nel database:
 	 * @param owned oggetto della classe OwnedLicense, rappresenta una licenza posseduta
-	 * @pre owned è un oggetto OwnedLicense valido non NULL
 	 * @return Il sistema restituisce vero se la licenza posseduta è attiva altrimenti restituisce un valore falso;
-	 * @throws Exception lancia un eccezione e la stampa
 	 */
 	
 	public static boolean isActive(OwnedLicense owned) {
