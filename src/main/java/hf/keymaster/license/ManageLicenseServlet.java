@@ -78,7 +78,7 @@ public class ManageLicenseServlet extends HttpServlet {
 					Utils.setAlert(new Alert("Cannot update license, please check fileds.", "danger"), session);
 				}
 			} else {
-				Utils.setAlert(new Alert("Cannot update license, please check fileds.", "danger"), session);
+				
 			}
 		}
 		req.include(request, response);
