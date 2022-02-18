@@ -42,8 +42,14 @@ public class ActivateLicenseServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String path = request.getPathInfo();
-		String[] paths = path.split("/");
-		String OwnedID = paths[1];
+		String[] paths = null;
+		String OwnedID = null;
+		if(path != null)
+		{
+			paths = path.split("/");
+			OwnedID = paths[1];
+		}
+
 		String ProductKey = request.getParameter("ProductKey");
 		User user = (User) session.getAttribute("user");
 
