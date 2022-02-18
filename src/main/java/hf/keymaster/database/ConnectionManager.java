@@ -31,10 +31,23 @@ public class ConnectionManager {
 	        }
 	    }
 	    
-	    public static Connection getDBConnection() throws SQLException {
+	    public static Connection xgetDBConnection() throws SQLException {
 	        return cpds.getConnection();
 	    }
 	    
+	    public static Connection getDBConnection() {
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				if (databaseConnection == null) {
+					databaseConnection = DriverManager.getConnection("jdbc:mysql://192.168.1.200:3306/keymaster?useSSL=false",
+							"external", "external271166");
+					//HkGVvELgKztkTBPS
+				}
+			} catch (SQLException | ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			return databaseConnection;
+		}
 	public static void closeConnection() throws SQLException {
 		databaseConnection.commit();
 		databaseConnection.close();
